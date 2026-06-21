@@ -1,0 +1,276 @@
+/* =============================================================================
+   efca-tokens.css — Design tokens efoilcotedazur.fr
+   -----------------------------------------------------------------------------
+   DA extraite de foilinparis.fr (stack source : Odoo + thème Inter).
+   Valeurs marquées [extrait] = lues dans le CSS/HTML de la source.
+   Valeurs marquées [dérivé]  = recalées/normalisées pour la refonte EFCA.
+   Préfixe imposé : --efca-
+   Cible : WordPress + Kadence + Gutenberg, CSS custom, mobile-first.
+   ============================================================================= */
+
+:root {
+
+  /* ---------------------------------------------------------------------------
+     1. PALETTE  (source : --o-color-1..5 du thème foilinparis + bloc tarifs)
+     --------------------------------------------------------------------------- */
+
+  /* Couleurs de marque — [FINAL : logo officiel ORANGE + TURQUOISE]
+     Orange = couleur principale / CTA (texte blanc). Turquoise = accent, liens,
+     "e" du logo, "CÔTE D'AZUR". Pétrole = encre. (Vert lime abandonné.) */
+  --efca-color-primary:        #F4631F;   /* orange logo : CTA, accents forts (texte blanc) */
+  --efca-color-primary-hover:  #DB5413;   /* hover bouton primaire */
+  --efca-color-primary-border: #C44A0F;   /* bordure hover bouton primaire */
+  --efca-color-accent:         #00A7C7;   /* turquoise logo : accents, "e", "Côte d'Azur" */
+  --efca-color-accent-deep:    #0E7C8B;   /* turquoise profond : libellés, liens, sur fond clair (contraste) */
+
+  --efca-color-secondary:      #C7EAEF;   /* turquoise clair : fonds doux, btn secondaire */
+  --efca-color-secondary-hover:#D5F0F4;   /* hover btn secondaire */
+  --efca-color-mint-100:       #DCF2F5;   /* turquoise très clair (pills, tints) */
+  --efca-color-mint-200:       #B6E4EA;   /* turquoise clair (motif / bordures) */
+
+  /* Neutres / fonds — [extrait] */
+  --efca-color-cream:          #FCF8F3;   /* crème (o-color-3) : fond de section alterné, vagues SVG */
+  --efca-color-bg:             #F9F9F9;   /* fond global off-white (bloc tarifs) */
+  --efca-color-white:          #FFFFFF;   /* o-color-4 : cartes, cellules */
+
+  /* Texte / contraste — [extrait] */
+  --efca-color-ink:            #0F2830;   /* pétrole sombre (o-color-5) : titres sur fond clair, dark sections */
+  --efca-color-text:           #222222;   /* corps de texte (--text-dark du bloc tarifs) */
+  --efca-color-text-muted:     #5B6B6E;   /* [dérivé] gris-pétrole désaturé pour légendes/labels */
+  --efca-color-on-primary:     #FFFFFF;   /* texte blanc sur l'orange */
+  --efca-color-on-dark:        #FFFFFF;   /* texte sur pétrole sombre */
+
+  /* Note Google / preuve sociale — [dérivé] (aligné palette) */
+  --efca-color-star:           #F4631F;   /* étoiles en orange de marque (pas le jaune Google par défaut) */
+  --efca-color-success:        #1EA672;   /* [dérivé] vert "ouvert / dispo", dérivé de la menthe */
+
+  /* Overlays sur image héro — [dérivé] (le héro source est image + vidéo plein écran) */
+  --efca-overlay-hero:         rgba(15, 40, 48, 0.42);                          /* voile pétrole pour lisibilité du titre */
+  --efca-overlay-hero-grad:    linear-gradient(180deg, rgba(15,40,48,0.15) 0%, rgba(15,40,48,0.55) 100%);
+
+
+  /* ---------------------------------------------------------------------------
+     2. TYPOGRAPHIE  (source : Inter 400/600/700, logo 900 ; échelle Bootstrap/Odoo)
+     --------------------------------------------------------------------------- */
+
+  --efca-font-base: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;  /* [extrait] */
+  --efca-font-heading: var(--efca-font-base);   /* la source utilise Inter partout */
+
+  /* Graisses — [extrait] */
+  --efca-fw-regular:  400;
+  --efca-fw-semibold: 600;
+  --efca-fw-bold:     700;
+  --efca-fw-black:    900;   /* réservé logo / chiffres clés (note 5,0) */
+
+  /* Échelle de titres — fluide clamp(mobile, vw, desktop)
+     desktop calé sur la source : display-3 = 4rem, h2 = 3rem, h2 mobile = 28px. [extrait+dérivé] */
+  --efca-fs-display: clamp(2.25rem, 1.5rem + 3.3vw, 4rem);     /* H1 héro (display-3 source) */
+  --efca-fs-h1:      clamp(1.875rem, 1.3rem + 2.7vw, 3rem);
+  --efca-fs-h2:      clamp(1.75rem,  1.2rem + 2.1vw, 2.5rem);  /* 28px mobile -> 40px desktop */
+  --efca-fs-h3:      clamp(1.375rem, 1.05rem + 1.2vw, 1.75rem);
+  --efca-fs-h4:      clamp(1.15rem,  1rem + 0.6vw, 1.375rem);
+  --efca-fs-lead:    clamp(1.0625rem,1rem + 0.4vw, 1.25rem);   /* sous-titre héro (.lead .h5-fs) */
+  --efca-fs-body:    1rem;       /* 16px */
+  --efca-fs-small:   0.875rem;   /* 14px : légendes, mentions */
+  --efca-fs-stat:    clamp(2.5rem, 2rem + 3vw, 4rem);          /* gros chiffre note 5,0 / 230 */
+
+  /* Interlignage — [dérivé] */
+  --efca-lh-tight:  1.1;    /* titres */
+  --efca-lh-snug:   1.3;    /* sous-titres */
+  --efca-lh-base:   1.6;    /* corps */
+
+  /* Approche (letter-spacing) — [extrait : -2px sur le gros logo source] */
+  --efca-ls-display: -0.02em;   /* titres serrés */
+  --efca-ls-label:   0.08em;    /* labels uppercase (JOURNÉE, MENSUEL…) */
+  --efca-tt-label:   uppercase; /* casse des micro-labels */
+
+
+  /* ---------------------------------------------------------------------------
+     3. ESPACEMENT  (source : échelle pt/pb Odoo en px ~ multiples de 8)
+     --------------------------------------------------------------------------- */
+  --efca-space-3xs: 0.25rem;  /*  4px */
+  --efca-space-2xs: 0.5rem;   /*  8px */
+  --efca-space-xs:  0.75rem;  /* 12px */
+  --efca-space-sm:  1rem;     /* 16px */
+  --efca-space-md:  1.5rem;   /* 24px (pt24) */
+  --efca-space-lg:  2rem;     /* 32px (pt32) */
+  --efca-space-xl:  2.5rem;   /* 40px (pb40) */
+  --efca-space-2xl: 3.5rem;   /* 56px (pt56) */
+  --efca-space-3xl: 4rem;     /* 64px (pb64) */
+  --efca-space-4xl: 6.5rem;   /* 104px (pt104) */
+  --efca-space-5xl: 7.5rem;   /* 120px (pt120) */
+  --efca-space-6xl: 10rem;    /* 160px (pt160 — padding héro) */
+
+  /* Rythme vertical des sections (mobile-first) — [dérivé] */
+  --efca-section-py:    var(--efca-space-2xl);  /* 56px mobile */
+  --efca-section-py-lg: var(--efca-space-4xl);  /* 104px desktop */
+  --efca-container-px:  1.25rem;                /* 20px gouttière (bloc tarifs source) */
+  --efca-container-max: 1200px;                 /* largeur max contenu */
+  --efca-gap:           1.25rem;                /* 20px gap grilles (source) */
+
+
+  /* ---------------------------------------------------------------------------
+     4. RAYONS  (source : 12 / 16 / 20px cartes ; 999px / 10rem pills ; 0.4rem boutons)
+     --------------------------------------------------------------------------- */
+  --efca-radius-xs:   0.4rem;   /* 6.4px — boutons (--btn-border-radius source) */
+  --efca-radius-sm:   0.75rem;  /* 12px — cellules tarifs */
+  --efca-radius-md:   1rem;     /* 16px — cartes mobiles */
+  --efca-radius-lg:   1.25rem;  /* 20px — cartes "feature" */
+  --efca-radius-xl:   1.5rem;   /* 24px — grandes cartes / médias */
+  --efca-radius-pill: 999px;    /* pills, badges, CTA arrondis (10rem source) */
+  --efca-radius-img:  1rem;     /* images "rounded" */
+
+
+  /* ---------------------------------------------------------------------------
+     5. OMBRES  (source : ombres douces + glow orange)
+     --------------------------------------------------------------------------- */
+  --efca-shadow-sm:   0 2px 8px rgba(0, 0, 0, 0.05);    /* cellules [extrait] */
+  --efca-shadow-md:   0 2px 10px rgba(0, 0, 0, 0.05);   /* cartes mobiles [extrait] */
+  --efca-shadow-lg:   0 8px 24px rgba(15, 40, 48, 0.10);/* [dérivé] cartes flottantes / sticky */
+  --efca-shadow-glow: 0 4px 12px rgba(244, 99, 31, 0.42);/* glow orange CTA/feature */
+  --efca-shadow-header:0 1px 6px rgba(0, 0, 0, 0.08);   /* barre nav / sticky (shadow-sm source) */
+
+
+  /* ---------------------------------------------------------------------------
+     6. BREAKPOINTS  (source : 768/769 + Bootstrap lg=992)
+     Note : les custom properties ne fonctionnent pas dans @media — utiliser
+     ces valeurs en littéral dans les media queries. Documentées ici pour repère.
+     --------------------------------------------------------------------------- */
+  --efca-bp-sm:  576px;
+  --efca-bp-md:  768px;   /* bascule cartes desktop/mobile (source) */
+  --efca-bp-lg:  992px;   /* bascule navbar desktop/mobile (source) */
+  --efca-bp-xl:  1200px;
+
+
+  /* ---------------------------------------------------------------------------
+     7. DIVERS  (motifs & transitions caractéristiques de la source)
+     --------------------------------------------------------------------------- */
+  /* Motif rayé menthe (séparateurs / fonds décoratifs) — [extrait] */
+  --efca-pattern-stripes: repeating-linear-gradient(90deg,
+      var(--efca-color-mint-200) 0 20px, #FFFFFF 20px 40px);
+
+
+  --efca-transition: 0.25s ease;
+  --efca-transition-slow: 0.4s ease;
+  --efca-z-sticky: 900;   /* CTA sticky mobile */
+  --efca-z-header: 1000;
+}
+
+
+/* =============================================================================
+   PRIMITIVES UTILITAIRES (optionnelles) — à coller derrière les blocs Kadence.
+   Réutilisent les tokens ci-dessus ; aucune dépendance framework.
+   ============================================================================= */
+
+.efca-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--efca-space-2xs);
+  font-family: var(--efca-font-base);
+  font-weight: var(--efca-fw-bold);
+  font-size: var(--efca-fs-body);
+  line-height: 1;
+  padding: 0.9rem 1.6rem;
+  border-radius: var(--efca-radius-pill);
+  border: 2px solid transparent;
+  cursor: pointer;
+  text-decoration: none;
+  transition: background-color var(--efca-transition), transform var(--efca-transition);
+}
+.efca-btn:hover { transform: translateY(-1px); }
+
+.efca-btn--primary {
+  background: var(--efca-color-primary);
+  color: var(--efca-color-on-primary);
+  border-color: var(--efca-color-primary);
+  box-shadow: var(--efca-shadow-glow);
+}
+.efca-btn--primary:hover {
+  background: var(--efca-color-primary-hover);
+  border-color: var(--efca-color-primary-border);
+}
+
+.efca-btn--secondary {
+  background: var(--efca-color-secondary);
+  color: var(--efca-color-ink);
+  border-color: var(--efca-color-secondary);
+}
+.efca-btn--secondary:hover { background: var(--efca-color-secondary-hover); }
+
+.efca-btn--ghost {
+  background: transparent;
+  color: var(--efca-color-on-dark);
+  border-color: var(--efca-color-on-dark);
+}
+
+.efca-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--efca-space-3xs);
+  background: var(--efca-color-mint-100);
+  color: var(--efca-color-ink);
+  font-weight: var(--efca-fw-bold);
+  padding: 0.35rem 0.9rem;
+  border-radius: var(--efca-radius-pill);
+}
+
+.efca-card {
+  background: var(--efca-color-white);
+  border-radius: var(--efca-radius-md);
+  box-shadow: var(--efca-shadow-md);
+  padding: var(--efca-space-md);
+}
+
+/* Barre de preuve sociale "5,0 ★ · 230 avis Google" */
+.efca-rating-bar {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--efca-space-2xs);
+  font-weight: var(--efca-fw-semibold);
+  color: var(--efca-color-on-dark);
+}
+.efca-rating-bar .efca-stars { color: var(--efca-color-star); letter-spacing: 0.05em; }
+
+/* CTA sticky mobile (réservation toujours accessible) */
+.efca-sticky-cta {
+  position: fixed;
+  left: 0; right: 0; bottom: 0;
+  z-index: var(--efca-z-sticky);
+  display: flex;
+  gap: var(--efca-space-2xs);
+  padding: var(--efca-space-2xs) var(--efca-space-sm);
+  background: var(--efca-color-white);
+  box-shadow: 0 -2px 12px rgba(0,0,0,0.12);
+}
+@media (min-width: 992px) { .efca-sticky-cta { display: none; } }
+
+/* Section : rythme vertical mobile-first */
+.efca-section { padding-block: var(--efca-section-py); }
+@media (min-width: 992px) { .efca-section { padding-block: var(--efca-section-py-lg); } }
+
+.efca-section--cream { background: var(--efca-color-cream); }
+.efca-section--mint  { background: var(--efca-color-secondary); }
+.efca-section--dark  { background: var(--efca-color-ink); color: var(--efca-color-on-dark); }
+
+.efca-container {
+  width: 100%;
+  max-width: var(--efca-container-max);
+  margin-inline: auto;
+  padding-inline: var(--efca-container-px);
+}
+
+/* Titres */
+.efca-h-display {
+  font-size: var(--efca-fs-display);
+  font-weight: var(--efca-fw-bold);
+  line-height: var(--efca-lh-tight);
+  letter-spacing: var(--efca-ls-display);
+}
+.efca-label {
+  font-size: var(--efca-fs-small);
+  text-transform: var(--efca-tt-label);
+  letter-spacing: var(--efca-ls-label);
+  font-weight: var(--efca-fw-semibold);
+  color: var(--efca-color-text-muted);
+}

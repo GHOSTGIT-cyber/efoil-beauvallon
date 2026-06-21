@@ -1,0 +1,937 @@
+/* =============================================================================
+   efca.css — Feuille de styles complète efoilcotedazur.fr (HTML pur)
+   -----------------------------------------------------------------------------
+   Construite à partir de efca-tokens.css (DA extraite de foilinparis.fr).
+   Mobile-first. Aucune dépendance framework.
+   Ordre : 1) @font-face  2) tokens (:root)  3) reset/base  4) primitives
+           5) sections de la one-page  6) media queries / motion.
+   NB : un sous-ensemble "critique" de ce fichier est inliné dans <head> de
+        index.html (au-dessus de la ligne de flottaison). Ce fichier reste
+        autonome : il peut servir seul.
+   ============================================================================= */
+
+/* ----------------------------------------------------------------------------
+   1. POLICES — Inter auto-hébergée (zéro Google Fonts bloquant)
+   PLACEHOLDER : déposer les .woff2 dans assets/fonts/ (voir README).
+   Si les fichiers sont absents, la stack système prend le relais (cf. token).
+   ---------------------------------------------------------------------------- */
+@font-face {
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: local("Inter"), url("../fonts/inter-400.woff2") format("woff2");
+}
+@font-face {
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: local("Inter SemiBold"), url("../fonts/inter-600.woff2") format("woff2");
+}
+@font-face {
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: local("Inter Bold"), url("../fonts/inter-700.woff2") format("woff2");
+}
+@font-face {
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 900;
+  font-display: swap;
+  src: local("Inter Black"), url("../fonts/inter-900.woff2") format("woff2");
+}
+
+/* ----------------------------------------------------------------------------
+   2. TOKENS (:root) — repris à l'identique de efca-tokens.css
+   ---------------------------------------------------------------------------- */
+:root {
+  /* Palette — FINAL : logo officiel ORANGE + TURQUOISE */
+  --efca-color-primary:        #F4631F;
+  --efca-color-primary-hover:  #DB5413;
+  --efca-color-primary-border: #C44A0F;
+  --efca-color-accent:         #00A7C7;
+  --efca-color-accent-deep:    #0E7C8B;
+  --efca-color-secondary:      #C7EAEF;
+  --efca-color-secondary-hover:#D5F0F4;
+  --efca-color-mint-100:       #DCF2F5;
+  --efca-color-mint-200:       #B6E4EA;
+  --efca-color-cream:          #FCF8F3;
+  --efca-color-bg:             #F9F9F9;
+  --efca-color-white:          #FFFFFF;
+  --efca-color-ink:            #0F2830;
+  --efca-color-text:           #222222;
+  --efca-color-text-muted:     #5B6B6E;
+  --efca-color-on-primary:     #FFFFFF;
+  --efca-color-on-dark:        #FFFFFF;
+  --efca-color-star:           #F4631F;
+  --efca-color-success:        #1EA672;
+  --efca-overlay-hero:         rgba(15, 40, 48, 0.42);
+  --efca-overlay-hero-grad:    linear-gradient(180deg, rgba(15,40,48,0.15) 0%, rgba(15,40,48,0.55) 100%);
+
+  /* Typographie */
+  --efca-font-base: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  --efca-font-heading: var(--efca-font-base);
+  --efca-fw-regular:  400;
+  --efca-fw-semibold: 600;
+  --efca-fw-bold:     700;
+  --efca-fw-black:    900;
+  --efca-fs-display: clamp(2.25rem, 1.5rem + 3.3vw, 4rem);
+  --efca-fs-h1:      clamp(1.875rem, 1.3rem + 2.7vw, 3rem);
+  --efca-fs-h2:      clamp(1.75rem,  1.2rem + 2.1vw, 2.5rem);
+  --efca-fs-h3:      clamp(1.375rem, 1.05rem + 1.2vw, 1.75rem);
+  --efca-fs-h4:      clamp(1.15rem,  1rem + 0.6vw, 1.375rem);
+  --efca-fs-lead:    clamp(1.0625rem,1rem + 0.4vw, 1.25rem);
+  --efca-fs-body:    1rem;
+  --efca-fs-small:   0.875rem;
+  --efca-fs-stat:    clamp(2.5rem, 2rem + 3vw, 4rem);
+  --efca-lh-tight:  1.1;
+  --efca-lh-snug:   1.3;
+  --efca-lh-base:   1.6;
+  --efca-ls-display: -0.02em;
+  --efca-ls-label:   0.08em;
+  --efca-tt-label:   uppercase;
+
+  /* Espacement */
+  --efca-space-3xs: 0.25rem;
+  --efca-space-2xs: 0.5rem;
+  --efca-space-xs:  0.75rem;
+  --efca-space-sm:  1rem;
+  --efca-space-md:  1.5rem;
+  --efca-space-lg:  2rem;
+  --efca-space-xl:  2.5rem;
+  --efca-space-2xl: 3.5rem;
+  --efca-space-3xl: 4rem;
+  --efca-space-4xl: 6.5rem;
+  --efca-space-5xl: 7.5rem;
+  --efca-space-6xl: 10rem;
+  --efca-section-py:    var(--efca-space-2xl);
+  --efca-section-py-lg: var(--efca-space-4xl);
+  --efca-container-px:  1.25rem;
+  --efca-container-max: 1200px;
+  --efca-gap:           1.25rem;
+
+  /* Rayons */
+  --efca-radius-xs:   0.4rem;
+  --efca-radius-sm:   0.75rem;
+  --efca-radius-md:   1rem;
+  --efca-radius-lg:   1.25rem;
+  --efca-radius-xl:   1.5rem;
+  --efca-radius-pill: 999px;
+  --efca-radius-img:  1rem;
+
+  /* Ombres */
+  --efca-shadow-sm:    0 2px 8px rgba(0, 0, 0, 0.05);
+  --efca-shadow-md:    0 2px 10px rgba(0, 0, 0, 0.05);
+  --efca-shadow-lg:    0 8px 24px rgba(15, 40, 48, 0.10);
+  --efca-shadow-glow:  0 4px 12px rgba(244, 99, 31, 0.42);
+  --efca-shadow-header:0 1px 6px rgba(0, 0, 0, 0.08);
+
+  /* Breakpoints (repère) : sm576 md768 lg992 xl1200 */
+
+  /* Divers */
+  --efca-pattern-stripes: repeating-linear-gradient(90deg,
+      var(--efca-color-mint-200) 0 20px, #FFFFFF 20px 40px);
+  --efca-transition: 0.25s ease;
+  --efca-transition-slow: 0.4s ease;
+  --efca-z-sticky: 900;
+  --efca-z-header: 1000;
+}
+
+/* ----------------------------------------------------------------------------
+   3. RESET / BASE
+   ---------------------------------------------------------------------------- */
+*, *::before, *::after { box-sizing: border-box; }
+* { margin: 0; }
+html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+body {
+  font-family: var(--efca-font-base);
+  font-size: var(--efca-fs-body);
+  line-height: var(--efca-lh-base);
+  color: var(--efca-color-text);
+  background: var(--efca-color-bg);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  /* place pour le CTA sticky mobile en bas */
+}
+img, picture, svg, video { display: block; max-width: 100%; height: auto; }
+a { color: inherit; }
+h1, h2, h3, h4 {
+  font-family: var(--efca-font-heading);
+  line-height: var(--efca-lh-tight);
+  color: var(--efca-color-ink);
+  letter-spacing: var(--efca-ls-display);
+}
+h2 { font-size: var(--efca-fs-h2); font-weight: var(--efca-fw-bold); }
+h3 { font-size: var(--efca-fs-h3); font-weight: var(--efca-fw-bold); }
+p  { line-height: var(--efca-lh-base); }
+
+/* Accessibilité : focus visible homogène */
+:where(a, button, summary, [tabindex]):focus-visible {
+  outline: 3px solid var(--efca-color-primary);
+  outline-offset: 2px;
+  border-radius: var(--efca-radius-xs);
+}
+.efca-skip-link {
+  position: absolute; left: -9999px; top: 0;
+  background: var(--efca-color-ink); color: #fff;
+  padding: var(--efca-space-2xs) var(--efca-space-sm); z-index: 1100;
+}
+.efca-skip-link:focus { left: var(--efca-space-2xs); top: var(--efca-space-2xs); }
+.efca-visually-hidden {
+  position: absolute !important; width: 1px; height: 1px;
+  padding: 0; margin: -1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; border: 0;
+}
+
+/* ----------------------------------------------------------------------------
+   4. PRIMITIVES (boutons, pills, cards, layout) — depuis efca-tokens.css
+   ---------------------------------------------------------------------------- */
+.efca-container {
+  width: 100%;
+  max-width: var(--efca-container-max);
+  margin-inline: auto;
+  padding-inline: var(--efca-container-px);
+}
+.efca-section { padding-block: var(--efca-section-py); }
+.efca-section--cream { background: var(--efca-color-cream); }
+.efca-section--mint  { background: var(--efca-color-secondary); }
+.efca-section--dark  { background: var(--efca-color-ink); color: var(--efca-color-on-dark); }
+.efca-section--dark h2, .efca-section--dark h3 { color: var(--efca-color-on-dark); }
+
+.efca-btn {
+  display: inline-flex; align-items: center; justify-content: center;
+  gap: var(--efca-space-2xs);
+  font-family: var(--efca-font-base);
+  font-weight: var(--efca-fw-bold);
+  font-size: var(--efca-fs-body);
+  line-height: 1;
+  padding: 0.9rem 1.6rem;
+  border-radius: var(--efca-radius-pill);
+  border: 2px solid transparent;
+  cursor: pointer; text-decoration: none;
+  transition: background-color var(--efca-transition), transform var(--efca-transition);
+}
+.efca-btn:hover { transform: translateY(-1px); }
+.efca-btn--lg { padding: 1.05rem 2rem; font-size: var(--efca-fs-lead); }
+.efca-btn--block { width: 100%; }
+.efca-btn--primary {
+  background: var(--efca-color-primary); color: var(--efca-color-on-primary);
+  border-color: var(--efca-color-primary); box-shadow: var(--efca-shadow-glow);
+}
+.efca-btn--primary:hover {
+  background: var(--efca-color-primary-hover); border-color: var(--efca-color-primary-border);
+}
+.efca-btn--secondary {
+  background: var(--efca-color-secondary); color: var(--efca-color-ink);
+  border-color: var(--efca-color-secondary);
+}
+.efca-btn--secondary:hover { background: var(--efca-color-secondary-hover); }
+.efca-btn--ghost {
+  background: transparent; color: var(--efca-color-on-dark); border-color: var(--efca-color-on-dark);
+}
+
+.efca-pill {
+  display: inline-flex; align-items: center; gap: var(--efca-space-3xs);
+  background: var(--efca-color-mint-100); color: var(--efca-color-ink);
+  font-weight: var(--efca-fw-bold); padding: 0.35rem 0.9rem;
+  border-radius: var(--efca-radius-pill);
+}
+
+.efca-card {
+  background: var(--efca-color-white);
+  border-radius: var(--efca-radius-md);
+  box-shadow: var(--efca-shadow-md);
+  padding: var(--efca-space-md);
+}
+
+.efca-label {
+  display: inline-block;
+  font-size: var(--efca-fs-small);
+  text-transform: var(--efca-tt-label);
+  letter-spacing: var(--efca-ls-label);
+  font-weight: var(--efca-fw-semibold);
+  color: var(--efca-color-accent-deep);
+  margin-bottom: var(--efca-space-2xs);
+}
+.efca-h-display {
+  font-size: var(--efca-fs-display);
+  font-weight: var(--efca-fw-bold);
+  line-height: var(--efca-lh-tight);
+  letter-spacing: var(--efca-ls-display);
+}
+.efca-lead { font-size: var(--efca-fs-lead); line-height: var(--efca-lh-snug); }
+.efca-section__head { max-width: 46rem; margin-bottom: var(--efca-space-xl); }
+.efca-section__head--center { margin-inline: auto; text-align: center; }
+
+/* Barre de preuve sociale "★★★★★ 5,0 · 230 avis Google" */
+.efca-rating-bar {
+  display: inline-flex; align-items: center; gap: var(--efca-space-2xs);
+  font-weight: var(--efca-fw-semibold);
+}
+.efca-rating-bar .efca-stars { color: var(--efca-color-star); letter-spacing: 0.05em; font-size: 1.1em; }
+
+/* ----------------------------------------------------------------------------
+   STYLE FOIL IN PARIS : vagues + mur d'images (rectangles arrondis)
+   ---------------------------------------------------------------------------- */
+
+/* Vague SVG séparatrice entre sections (couleur posée en inline par boundary) */
+.efca-wavesep { display: block; line-height: 0; margin: 0; }
+.efca-wavesep svg { display: block; width: 100%; height: 40px; }
+@media (min-width: 768px) { .efca-wavesep svg { height: 72px; } }
+
+/* Mur d'images façon Foil in Paris : colonnes, images en rectangles arrondis */
+.efca-imgwall { columns: 2; column-gap: var(--efca-gap); }
+@media (min-width: 768px) { .efca-imgwall { columns: 3; } }
+.efca-imgwall img {
+  width: 100%; height: auto; display: block; break-inside: avoid;
+  margin-bottom: var(--efca-gap);
+  border-radius: var(--efca-radius-md); box-shadow: var(--efca-shadow-sm);
+}
+
+/* ----------------------------------------------------------------------------
+   REELS VIDÉO (3 reels verticaux 9:16)
+   ---------------------------------------------------------------------------- */
+.efca-reels {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--efca-space-md);
+  margin-top: var(--efca-space-xl);
+}
+@media (max-width: 767px) {
+  .efca-reels {
+    grid-template-columns: repeat(3, 72vw);
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+    padding-bottom: var(--efca-space-sm);
+  }
+}
+.efca-reel {
+  position: relative;
+  border-radius: var(--efca-radius-xl);
+  overflow: hidden;
+  aspect-ratio: 9 / 16;
+  margin: 0;
+  background: var(--efca-color-ink);
+  scroll-snap-align: start;
+}
+.efca-reel video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+.efca-reel figcaption {
+  position: absolute;
+  bottom: 0; left: 0; right: 0;
+  padding: var(--efca-space-md) var(--efca-space-md) var(--efca-space-sm);
+  background: linear-gradient(to top, rgba(15,40,48,.85) 0%, transparent 100%);
+  color: #fff;
+  font-weight: var(--efca-fw-semibold);
+  font-size: var(--efca-fs-small);
+  letter-spacing: var(--efca-ls-label);
+  text-transform: uppercase;
+}
+
+/* ----------------------------------------------------------------------------
+   5. HEADER (barre légère + logo + CTA)
+   ---------------------------------------------------------------------------- */
+.efca-header {
+  position: sticky; top: 0; z-index: var(--efca-z-header);
+  background: rgba(255,255,255,0.92);
+  backdrop-filter: saturate(140%) blur(6px);
+  box-shadow: var(--efca-shadow-header);
+}
+.efca-header__inner {
+  display: flex; align-items: center; justify-content: space-between;
+  gap: var(--efca-space-sm); padding-block: var(--efca-space-2xs);
+}
+/* Logo wordmark bi-couleur (e turquoise + FOIL orange + Côte d'Azur turquoise).
+   Reproduction typographique du logo officiel — remplaçable par le SVG/PNG réel. */
+.efca-logo {
+  display: inline-flex; align-items: baseline; gap: 0.02em;
+  font-weight: var(--efca-fw-black); font-size: 1.4rem; letter-spacing: -0.03em;
+  line-height: 1; text-decoration: none; color: var(--efca-color-ink);
+}
+/* Couleurs du logo FIXES (indépendantes du thème) : la marque ne change pas. */
+.efca-logo__e    { color: #00A7C7; }
+.efca-logo__foil { color: #F4631F; }
+.efca-logo__sub  {
+  font-size: 0.44em; font-weight: var(--efca-fw-bold); letter-spacing: 0.1em;
+  text-transform: uppercase; color: #00A7C7;
+  align-self: flex-end; margin-left: 0.2em; padding-bottom: 0.15em;
+}
+.efca-header__cta { display: none; }
+@media (min-width: 992px) { .efca-header__cta { display: inline-flex; } }
+
+/* Bandeau co-branding Lift France (Vente — Location — Maintenance) */
+.efca-cobrand { background: var(--efca-color-bg); padding: var(--efca-space-md) var(--efca-space-sm); border-bottom: 1px solid #ECEFEC; }
+.efca-cobrand__inner { display: flex; flex-wrap: wrap; gap: var(--efca-space-2xs) var(--efca-space-md); align-items: center; justify-content: center; text-align: center; }
+.efca-cobrand__lead { font-weight: var(--efca-fw-bold); color: var(--efca-color-ink); }
+.efca-cobrand__lead b { color: var(--efca-color-primary); }
+.efca-cobrand__svc { display: inline-flex; gap: var(--efca-space-2xs); align-items: center; font-weight: var(--efca-fw-bold); text-transform: uppercase; letter-spacing: 0.06em; font-size: var(--efca-fs-small); color: var(--efca-color-text-muted); }
+.efca-cobrand__svc span:nth-of-type(odd)  { color: var(--efca-color-accent); }
+.efca-cobrand__svc span:nth-of-type(even) { color: var(--efca-color-primary); }
+
+/* ----------------------------------------------------------------------------
+   6. HERO
+   ---------------------------------------------------------------------------- */
+.efca-hero {
+  position: relative; isolation: isolate;
+  min-height: 92vh; display: flex; align-items: flex-end;
+  padding-block: var(--efca-space-6xl) var(--efca-space-3xl);
+  color: var(--efca-color-on-dark);
+  background-color: var(--efca-color-ink);
+}
+.efca-hero__media {
+  position: absolute; inset: 0; z-index: -2; overflow: hidden;
+}
+.efca-hero__media img, .efca-hero__media video {
+  width: 100%; height: 100%; object-fit: cover;
+}
+/* Gradient bottom-up : vidéo visible en haut, texte lisible en bas */
+.efca-hero::after {
+  content: ""; position: absolute; inset: 0; z-index: -1;
+  background: linear-gradient(to top,
+    rgba(15,40,48,0.88) 0%,
+    rgba(15,40,48,0.50) 40%,
+    rgba(15,40,48,0.10) 75%,
+    rgba(15,40,48,0.00) 100%);
+}
+.efca-hero__inner {
+  max-width: 38rem;
+  margin-inline: 0;
+  animation: heroSlideUp 0.85s cubic-bezier(0.22, 1, 0.36, 1) both;
+  animation-delay: 0.15s;
+}
+@keyframes heroSlideUp {
+  from { opacity: 0; transform: translateY(48px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .efca-hero__inner { animation: none; }
+}
+.efca-hero h1 { color: var(--efca-color-on-dark); margin-bottom: var(--efca-space-sm); }
+.efca-hero .efca-lead { margin-bottom: var(--efca-space-lg); opacity: 0.95; color: rgba(255,255,255,0.90); }
+.efca-hero__actions {
+  display: flex; flex-wrap: wrap; gap: var(--efca-space-sm); align-items: center;
+  margin-bottom: var(--efca-space-lg);
+}
+.efca-hero .efca-rating-bar { color: var(--efca-color-on-dark); }
+
+/* ----------------------------------------------------------------------------
+   7. MUR D'AVIS
+   ---------------------------------------------------------------------------- */
+.efca-rating-hero {
+  display: flex; flex-direction: column; align-items: center; text-align: center;
+  gap: var(--efca-space-2xs); margin-bottom: var(--efca-space-xl);
+}
+.efca-rating-hero__score {
+  font-size: var(--efca-fs-stat); font-weight: var(--efca-fw-black);
+  line-height: 1; color: var(--efca-color-ink);
+}
+.efca-rating-hero__stars { color: var(--efca-color-star); font-size: 1.6rem; letter-spacing: 0.08em; }
+.efca-badge-google {
+  display: inline-flex; align-items: center; gap: var(--efca-space-2xs);
+  background: var(--efca-color-white); box-shadow: var(--efca-shadow-sm);
+  border-radius: var(--efca-radius-pill); padding: 0.4rem 0.9rem;
+  font-size: var(--efca-fs-small); font-weight: var(--efca-fw-semibold);
+}
+
+/* Carrousel avis : piste scroll-snap + contrôles */
+.efca-reviews { position: relative; }
+.efca-reviews__track {
+  display: flex; gap: var(--efca-gap);
+  overflow-x: auto; scroll-snap-type: x mandatory;
+  scroll-behavior: smooth; padding-bottom: var(--efca-space-sm);
+  scrollbar-width: thin;
+}
+.efca-reviews__track::-webkit-scrollbar { height: 6px; }
+.efca-reviews__track::-webkit-scrollbar-thumb { background: var(--efca-color-mint-200); border-radius: 999px; }
+.efca-review {
+  flex: 0 0 88%; scroll-snap-align: center;
+  background: var(--efca-color-white); border-radius: var(--efca-radius-md);
+  box-shadow: var(--efca-shadow-md); padding: var(--efca-space-md);
+  display: flex; flex-direction: column; gap: var(--efca-space-2xs);
+}
+.efca-review__stars { color: var(--efca-color-star); letter-spacing: 0.05em; }
+.efca-review__text { color: var(--efca-color-text); }
+.efca-review__author { font-weight: var(--efca-fw-bold); color: var(--efca-color-ink); }
+.efca-review__meta { font-size: var(--efca-fs-small); color: var(--efca-color-text-muted); }
+.efca-reviews__controls { display: flex; gap: var(--efca-space-2xs); justify-content: center; margin-top: var(--efca-space-sm); }
+.efca-reviews__btn {
+  width: 44px; height: 44px; border-radius: 999px; border: 0; cursor: pointer;
+  background: var(--efca-color-white); box-shadow: var(--efca-shadow-sm);
+  font-size: 1.2rem; color: var(--efca-color-ink);
+}
+.efca-reviews__btn:hover { background: var(--efca-color-mint-100); }
+
+/* Bandeau réseau (emplacement réservé, masqué tant que non validé) */
+.efca-network-banner {
+  margin-top: var(--efca-space-xl); padding: var(--efca-space-md);
+  background: var(--efca-color-mint-100); border-radius: var(--efca-radius-md);
+  text-align: center; font-weight: var(--efca-fw-semibold);
+}
+
+/* ----------------------------------------------------------------------------
+   8. GRILLES GÉNÉRIQUES (expérience, encadrement, tarifs)
+   ---------------------------------------------------------------------------- */
+.efca-grid { display: grid; gap: var(--efca-gap); }
+.efca-media-text { display: grid; gap: var(--efca-space-lg); align-items: center; }
+.efca-media-text__img img { border-radius: var(--efca-radius-xl); box-shadow: var(--efca-shadow-lg); }
+
+/* Info boxes (arguments simples, sans icône) */
+.efca-infobox { text-align: left; }
+.efca-infobox h3 { font-size: var(--efca-fs-h4); margin-bottom: var(--efca-space-3xs); }
+
+/* Cartes-arguments illustrées par photo (accessible / encadré / sécurisé) */
+.efca-feature { padding: 0; overflow: hidden; display: flex; flex-direction: column; }
+.efca-feature__media { aspect-ratio: 16 / 11; overflow: hidden; }
+.efca-feature__media img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform var(--efca-transition-slow); }
+.efca-feature:hover .efca-feature__media img { transform: scale(1.04); }
+.efca-feature__body { padding: var(--efca-space-md); }
+.efca-feature__body h3 { font-size: var(--efca-fs-h4); margin-bottom: var(--efca-space-3xs); }
+
+/* Exergue citation d'avis — sobre, grande guillemet décorative (sans gros trait) */
+.efca-quote {
+  position: relative;
+  padding: var(--efca-space-lg) var(--efca-space-lg) var(--efca-space-lg) var(--efca-space-2xl);
+  background: var(--efca-color-white); border-radius: var(--efca-radius-md);
+  box-shadow: var(--efca-shadow-sm); font-style: italic; color: var(--efca-color-text);
+  margin-top: var(--efca-space-lg);
+}
+.efca-quote::before {
+  content: "\201C"; position: absolute; left: 0.5rem; top: 0.1rem;
+  font-family: Georgia, "Times New Roman", serif; font-style: normal;
+  font-size: 3.5rem; line-height: 1; color: var(--efca-color-secondary);
+}
+.efca-quote cite { display: block; margin-top: var(--efca-space-2xs); font-style: normal; font-weight: var(--efca-fw-semibold); color: var(--efca-color-text-muted); font-size: var(--efca-fs-small); }
+
+/* Tarifs */
+.efca-pricing { display: grid; gap: var(--efca-gap); }
+.efca-price-card {
+  background: var(--efca-color-white); border-radius: var(--efca-radius-lg);
+  box-shadow: var(--efca-shadow-md); overflow: hidden; display: flex; flex-direction: column;
+}
+.efca-price-card--feature { box-shadow: var(--efca-shadow-glow); }
+.efca-price-card__head {
+  background: var(--efca-color-primary); color: var(--efca-color-on-primary);
+  padding: var(--efca-space-md); text-align: center;
+}
+.efca-price-card__price { font-size: var(--efca-fs-h2); font-weight: var(--efca-fw-black); line-height: 1; }
+.efca-price-card__price small { font-size: var(--efca-fs-small); font-weight: var(--efca-fw-semibold); opacity: 0.9; }
+.efca-price-card__body { padding: var(--efca-space-md); display: flex; flex-direction: column; gap: var(--efca-space-sm); flex: 1; }
+.efca-price-card__list { list-style: none; padding: 0; display: flex; flex-direction: column; gap: var(--efca-space-2xs); }
+.efca-price-card__list li { display: flex; gap: var(--efca-space-2xs); }
+.efca-price-card__list li::before { content: "✓"; color: var(--efca-color-success); font-weight: 700; }
+
+/* ----------------------------------------------------------------------------
+   9. RÉSERVER / LIEU / FAQ / FOOTER
+   ---------------------------------------------------------------------------- */
+.efca-book { text-align: center; }
+.efca-book__future {
+  margin-top: var(--efca-space-md); font-size: var(--efca-fs-small);
+  color: var(--efca-color-text-muted);
+}
+
+.efca-place { display: grid; gap: var(--efca-space-lg); }
+.efca-place__map iframe, .efca-place__map img {
+  width: 100%; aspect-ratio: 16 / 10; border: 0; border-radius: var(--efca-radius-md);
+}
+.efca-nap address { font-style: normal; line-height: var(--efca-lh-base); }
+.efca-nap__phone { font-weight: var(--efca-fw-bold); color: var(--efca-color-accent-deep); text-decoration: none; }
+
+/* FAQ : <details> natif, zéro JS */
+.efca-faq__item {
+  background: var(--efca-color-white); border-radius: var(--efca-radius-sm);
+  box-shadow: var(--efca-shadow-sm); margin-bottom: var(--efca-space-2xs); overflow: hidden;
+}
+.efca-faq__item summary {
+  cursor: pointer; list-style: none; padding: var(--efca-space-sm) var(--efca-space-md);
+  font-weight: var(--efca-fw-bold); color: var(--efca-color-ink);
+  display: flex; justify-content: space-between; align-items: center; gap: var(--efca-space-sm);
+}
+.efca-faq__item summary::-webkit-details-marker { display: none; }
+.efca-faq__item summary::after { content: "+"; color: var(--efca-color-primary); font-size: 1.4rem; line-height: 1; }
+.efca-faq__item[open] summary::after { content: "−"; }
+.efca-faq__item > div { padding: 0 var(--efca-space-md) var(--efca-space-sm); color: var(--efca-color-text); }
+
+.efca-footer { padding-block: var(--efca-space-3xl) var(--efca-space-2xl); }
+.efca-footer a { color: var(--efca-color-on-dark); text-decoration: none; }
+.efca-footer a:hover { text-decoration: underline; }
+.efca-footer__cols { display: grid; gap: var(--efca-space-lg); }
+.efca-footer__social { display: flex; gap: var(--efca-space-sm); margin-top: var(--efca-space-2xs); }
+.efca-footer__legal {
+  margin-top: var(--efca-space-lg); padding-top: var(--efca-space-md);
+  border-top: 1px solid rgba(255,255,255,0.15);
+  font-size: var(--efca-fs-small); opacity: 0.8;
+  display: flex; flex-wrap: wrap; gap: var(--efca-space-sm); justify-content: space-between;
+}
+
+/* ----------------------------------------------------------------------------
+   10. CTA STICKY MOBILE
+   ---------------------------------------------------------------------------- */
+.efca-sticky-cta {
+  position: fixed; left: 0; right: 0; bottom: 0; z-index: var(--efca-z-sticky);
+  display: flex; gap: var(--efca-space-2xs);
+  padding: var(--efca-space-2xs) var(--efca-space-sm);
+  padding-bottom: calc(var(--efca-space-2xs) + env(safe-area-inset-bottom));
+  background: var(--efca-color-white); box-shadow: 0 -2px 12px rgba(0,0,0,0.12);
+}
+.efca-sticky-cta .efca-btn { flex: 1; }
+.efca-sticky-cta__rating { display: none; }
+@media (min-width: 992px) { .efca-sticky-cta { display: none; } }
+/* compense la barre sticky pour ne pas masquer le footer sur mobile */
+@media (max-width: 991.98px) { body { padding-bottom: 76px; } }
+
+/* ----------------------------------------------------------------------------
+   11. ANIMATIONS RÉVÉLATION (JS optionnel) — respecte prefers-reduced-motion
+   ---------------------------------------------------------------------------- */
+.efca-reveal { opacity: 0; transform: translateY(16px); transition: opacity var(--efca-transition-slow), transform var(--efca-transition-slow); }
+.efca-reveal.is-visible { opacity: 1; transform: none; }
+
+/* ----------------------------------------------------------------------------
+   12. MEDIA QUERIES (≥ desktop)
+   ---------------------------------------------------------------------------- */
+@media (min-width: 768px) {
+  .efca-grid--3 { grid-template-columns: repeat(3, 1fr); }
+  .efca-grid--2 { grid-template-columns: repeat(2, 1fr); }
+  .efca-media-text { grid-template-columns: 1fr 1fr; }
+  .efca-media-text--reverse .efca-media-text__img { order: 2; }
+  .efca-pricing { grid-template-columns: repeat(3, 1fr); align-items: start; }
+  .efca-grid--4 { grid-template-columns: repeat(4, 1fr); }
+  .efca-process { grid-template-columns: repeat(4, 1fr); }
+  .efca-place { grid-template-columns: 1fr 1fr; align-items: start; }
+  .efca-footer__cols { grid-template-columns: 2fr 1fr 1fr; }
+  .efca-review { flex-basis: 42%; }
+}
+@media (min-width: 992px) {
+  .efca-section { padding-block: var(--efca-section-py-lg); }
+  .efca-review { flex-basis: 31%; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .efca-reveal { opacity: 1; transform: none; transition: none; }
+  .efca-btn, .efca-reviews__track { transition: none; }
+  .efca-spinner { animation: none; }
+}
+
+/* =============================================================================
+   TUNNEL RÉSERVATION / PAIEMENT SIMULÉ (reservation.html)
+   ============================================================================= */
+
+/* Bandeau DÉMO (toujours visible, non ambigu) */
+.efca-demo-banner {
+  background: repeating-linear-gradient(45deg, #2A2A2A 0 14px, #1c1c1c 14px 28px);
+  color: #fff; text-align: center;
+  font-size: var(--efca-fs-small); font-weight: var(--efca-fw-bold);
+  letter-spacing: var(--efca-ls-label); text-transform: uppercase;
+  padding: var(--efca-space-2xs) var(--efca-space-sm);
+}
+.efca-demo-banner b { color: var(--efca-color-primary); }
+
+/* Fil d'étapes */
+.efca-steps {
+  display: flex; gap: var(--efca-space-2xs); justify-content: center;
+  list-style: none; padding: 0; margin: 0 0 var(--efca-space-xl);
+  flex-wrap: wrap;
+}
+.efca-steps li {
+  font-size: var(--efca-fs-small); font-weight: var(--efca-fw-semibold);
+  color: var(--efca-color-text-muted);
+  display: flex; align-items: center; gap: var(--efca-space-3xs);
+}
+.efca-steps li[aria-current="true"] { color: var(--efca-color-accent-deep); }
+.efca-steps li .efca-steps__dot {
+  width: 22px; height: 22px; border-radius: 999px; display: grid; place-items: center;
+  background: var(--efca-color-secondary); color: var(--efca-color-ink);
+  font-size: 0.75rem; font-weight: var(--efca-fw-bold);
+}
+.efca-steps li[aria-current="true"] .efca-steps__dot { background: var(--efca-color-primary); }
+.efca-steps li[data-done="true"] .efca-steps__dot { background: var(--efca-color-accent-deep); color: #fff; }
+
+/* Conteneur du tunnel */
+.efca-tunnel { max-width: 640px; }
+.efca-step[hidden] { display: none; }
+
+/* Formulaire */
+.efca-form { display: grid; gap: var(--efca-space-md); }
+.efca-field { display: grid; gap: var(--efca-space-3xs); }
+.efca-field--row { grid-template-columns: 1fr 1fr; gap: var(--efca-space-md); }
+@media (max-width: 575.98px) { .efca-field--row { grid-template-columns: 1fr; } }
+.efca-field label { font-weight: var(--efca-fw-semibold); font-size: var(--efca-fs-small); color: var(--efca-color-ink); }
+.efca-field label .efca-req { color: var(--efca-color-accent-deep); }
+.efca-input, .efca-select, .efca-textarea {
+  font: inherit; width: 100%;
+  padding: 0.75rem 0.9rem;
+  border: 2px solid #E3E6E4; border-radius: var(--efca-radius-sm);
+  background: var(--efca-color-white); color: var(--efca-color-text);
+  transition: border-color var(--efca-transition);
+}
+.efca-input:focus, .efca-select:focus, .efca-textarea:focus {
+  outline: none; border-color: var(--efca-color-primary);
+}
+.efca-textarea { min-height: 96px; resize: vertical; }
+/* Honeypot : caché aux humains, atteignable par les bots */
+.efca-hp { position: absolute !important; left: -9999px; width: 1px; height: 1px; overflow: hidden; }
+.efca-form__error {
+  background: #FDECEC; color: #B42318; border-radius: var(--efca-radius-sm);
+  padding: var(--efca-space-2xs) var(--efca-space-sm); font-size: var(--efca-fs-small);
+}
+.efca-form__error[hidden] { display: none; }
+
+/* Récap + écran de paiement simulé */
+.efca-recap {
+  background: var(--efca-color-cream); border-radius: var(--efca-radius-md);
+  padding: var(--efca-space-md); margin-bottom: var(--efca-space-lg);
+}
+.efca-recap__row { display: flex; justify-content: space-between; gap: var(--efca-space-sm); padding: var(--efca-space-3xs) 0; }
+.efca-recap__total {
+  border-top: 1px solid #E3E6E4; margin-top: var(--efca-space-2xs); padding-top: var(--efca-space-2xs);
+  font-weight: var(--efca-fw-black); font-size: var(--efca-fs-h4);
+}
+.efca-paycard {
+  background: var(--efca-color-white); border-radius: var(--efca-radius-md);
+  box-shadow: var(--efca-shadow-lg); padding: var(--efca-space-md);
+  border: 1px solid #ECEFEC;
+}
+.efca-paycard__brandrow { display: flex; gap: var(--efca-space-3xs); justify-content: flex-end; opacity: 0.5; font-weight: 700; }
+.efca-paycard .efca-field { margin-bottom: var(--efca-space-sm); }
+.efca-pay-note { font-size: var(--efca-fs-small); color: var(--efca-color-text-muted); margin-top: var(--efca-space-sm); text-align: center; }
+
+/* Animation de traitement */
+.efca-processing { display: flex; flex-direction: column; align-items: center; gap: var(--efca-space-sm); padding: var(--efca-space-2xl) 0; text-align: center; }
+.efca-spinner {
+  width: 48px; height: 48px; border-radius: 999px;
+  border: 5px solid var(--efca-color-secondary); border-top-color: var(--efca-color-primary);
+  animation: efca-spin 0.8s linear infinite;
+}
+@keyframes efca-spin { to { transform: rotate(360deg); } }
+
+/* Succès */
+.efca-success { text-align: center; }
+.efca-success__check {
+  width: 72px; height: 72px; margin: 0 auto var(--efca-space-md);
+  border-radius: 999px; background: var(--efca-color-primary); color: var(--efca-color-ink);
+  display: grid; place-items: center; font-size: 2.2rem; font-weight: var(--efca-fw-black);
+  box-shadow: var(--efca-shadow-glow);
+}
+.efca-success__tag {
+  display: inline-block; margin-top: var(--efca-space-sm);
+  background: #2A2A2A; color: #fff; border-radius: var(--efca-radius-pill);
+  padding: 0.25rem 0.9rem; font-size: var(--efca-fs-small); font-weight: var(--efca-fw-bold);
+  letter-spacing: var(--efca-ls-label); text-transform: uppercase;
+}
+
+/* Emplacement Stripe (mode 'stripe') */
+#efca-stripe-mount { min-height: 320px; }
+.efca-stripe-placeholder {
+  border: 2px dashed #C7CDC9; border-radius: var(--efca-radius-md);
+  padding: var(--efca-space-xl); text-align: center; color: var(--efca-color-text-muted);
+}
+
+/* =============================================================================
+   TABLEAU DE BORD (dashboard.html)
+   ============================================================================= */
+.efca-dash { max-width: 1100px; }
+.efca-dash__head {
+  display: flex; flex-wrap: wrap; gap: var(--efca-space-sm);
+  align-items: flex-end; justify-content: space-between; margin-bottom: var(--efca-space-lg);
+}
+
+/* Cartes statistiques */
+.efca-stats { display: grid; grid-template-columns: repeat(2, 1fr); gap: var(--efca-gap); margin-bottom: var(--efca-space-lg); }
+@media (min-width: 768px) { .efca-stats { grid-template-columns: repeat(5, 1fr); } }
+.efca-stat {
+  background: var(--efca-color-white); border-radius: var(--efca-radius-md);
+  box-shadow: var(--efca-shadow-sm); padding: var(--efca-space-md); text-align: center;
+}
+.efca-stat__num { font-size: var(--efca-fs-h2); font-weight: var(--efca-fw-black); line-height: 1; color: var(--efca-color-ink); }
+.efca-stat__label { font-size: var(--efca-fs-small); color: var(--efca-color-text-muted); margin-top: var(--efca-space-3xs); }
+.efca-stat--accent { background: var(--efca-color-secondary); }
+
+/* Barre d'outils */
+.efca-toolbar {
+  display: flex; flex-wrap: wrap; gap: var(--efca-space-sm); align-items: center;
+  justify-content: space-between; margin-bottom: var(--efca-space-md);
+}
+.efca-toolbar__group { display: flex; gap: var(--efca-space-2xs); align-items: center; }
+.efca-conn { font-size: var(--efca-fs-small); display: inline-flex; align-items: center; gap: var(--efca-space-3xs); }
+.efca-conn__dot { width: 9px; height: 9px; border-radius: 999px; background: var(--efca-color-text-muted); }
+.efca-conn[data-state="live"] .efca-conn__dot { background: var(--efca-color-accent-deep); }
+.efca-conn[data-state="demo"] .efca-conn__dot { background: #C99A00; }
+
+/* Table */
+.efca-table-wrap { overflow-x: auto; border-radius: var(--efca-radius-md); box-shadow: var(--efca-shadow-md); background: var(--efca-color-white); }
+.efca-table { width: 100%; border-collapse: collapse; min-width: 760px; }
+.efca-table th, .efca-table td { padding: var(--efca-space-sm) var(--efca-space-md); text-align: left; vertical-align: top; }
+.efca-table thead th {
+  font-size: var(--efca-fs-small); text-transform: uppercase; letter-spacing: var(--efca-ls-label);
+  color: var(--efca-color-text-muted); border-bottom: 2px solid #ECEFEC; white-space: nowrap;
+}
+.efca-table tbody tr { border-bottom: 1px solid #F0F2F0; }
+.efca-table tbody tr:hover { background: var(--efca-color-cream); }
+.efca-table small { color: var(--efca-color-text-muted); }
+.efca-table__amount { font-weight: var(--efca-fw-bold); white-space: nowrap; }
+
+/* Pills de statut */
+.efca-status {
+  display: inline-block; font-size: var(--efca-fs-small); font-weight: var(--efca-fw-bold);
+  padding: 0.2rem 0.7rem; border-radius: var(--efca-radius-pill); white-space: nowrap;
+}
+.efca-status--pending   { background: #EEF1EF; color: #4A5654; }
+.efca-status--validated { background: #E7F4DC; color: var(--efca-color-accent-deep); }
+.efca-status--paid_sim  { background: var(--efca-color-primary); color: var(--efca-color-ink); }
+.efca-status--refused   { background: #FDECEC; color: #B42318; }
+
+/* Sélecteur d'action de statut */
+.efca-status-select { font: inherit; padding: 0.4rem 0.5rem; border: 2px solid #E3E6E4; border-radius: var(--efca-radius-xs); background: #fff; }
+.efca-status-select:focus { outline: none; border-color: var(--efca-color-primary); }
+
+.efca-dash__empty { padding: var(--efca-space-2xl); text-align: center; color: var(--efca-color-text-muted); }
+.efca-dash__empty[hidden] { display: none; }
+
+/* =============================================================================
+   SECTIONS INSPIRÉES DU RÉSEAU (St-Tropez / Le Touquet / Foil in Paris)
+   ============================================================================= */
+
+/* Déroulé en étapes numérotées (« Comment ça se passe ») */
+.efca-process { display: grid; gap: var(--efca-gap); counter-reset: efcastep; }
+.efca-process__item {
+  background: var(--efca-color-white);
+  border-radius: var(--efca-radius-lg);
+  overflow: hidden;
+  box-shadow: var(--efca-shadow-sm);
+}
+.efca-process__img {
+  position: relative;
+  aspect-ratio: 3 / 2;
+  overflow: hidden;
+}
+.efca-process__img img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.efca-process__body { padding: var(--efca-space-sm) var(--efca-space-sm) var(--efca-space-md); }
+.efca-process__body::before {
+  counter-increment: efcastep; content: counter(efcastep);
+  display: grid; place-items: center; width: 40px; height: 40px;
+  border-radius: 999px; background: var(--efca-color-accent); color: #fff;
+  font-weight: var(--efca-fw-black); font-size: 1rem; margin-bottom: var(--efca-space-2xs);
+}
+.efca-process__item h3 { font-size: var(--efca-fs-h4); margin-bottom: var(--efca-space-3xs); }
+
+/* ── REEL STRIP (style horizontal scroll — nouvelle section) ── */
+.efca-reel-strip-wrap {
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  -webkit-overflow-scrolling: touch;
+  display: flex;
+  gap: var(--efca-space-sm);
+  margin-top: var(--efca-space-xl);
+  padding-bottom: var(--efca-space-xs);
+}
+.efca-reel-strip-wrap::-webkit-scrollbar { height: 4px; }
+.efca-reel-strip-wrap::-webkit-scrollbar-track { background: transparent; }
+.efca-reel-strip-wrap::-webkit-scrollbar-thumb { background: var(--efca-color-mint-200); border-radius: 99px; }
+.efca-reel-card {
+  flex: none;
+  width: clamp(200px, 22vw, 260px);
+  scroll-snap-align: start;
+  border-radius: var(--efca-radius-xl);
+  overflow: hidden;
+  background: var(--efca-color-ink);
+  box-shadow: var(--efca-shadow-md);
+}
+.efca-reel-card video {
+  width: 100%;
+  aspect-ratio: 9 / 16;
+  object-fit: cover;
+  display: block;
+}
+.efca-reel-card figcaption {
+  padding: var(--efca-space-xs) var(--efca-space-sm);
+  font-size: var(--efca-fs-small);
+  font-weight: var(--efca-fw-semibold);
+  color: var(--efca-color-text-muted);
+  text-align: center;
+  background: var(--efca-color-white);
+}
+@media (max-width: 767px) {
+  .efca-reel-card { width: 72vw; }
+}
+
+/* Cover CTA pleine largeur (« Prêt à voler ? ») */
+.efca-cover {
+  position: relative; isolation: isolate; overflow: hidden;
+  padding-block: var(--efca-space-4xl); text-align: center;
+  color: var(--efca-color-on-dark); background: var(--efca-color-ink);
+}
+.efca-cover__media { position: absolute; inset: 0; z-index: -2; }
+.efca-cover__media img { width: 100%; height: 100%; object-fit: cover; }
+.efca-cover::after { content: ""; position: absolute; inset: 0; z-index: -1; background: var(--efca-overlay-hero-grad), var(--efca-overlay-hero); }
+.efca-cover h2 { color: var(--efca-color-on-dark); }
+.efca-cover .efca-lead { max-width: 40rem; margin: var(--efca-space-sm) auto var(--efca-space-lg); opacity: 0.95; }
+
+/* Prix d'une carte gamme */
+.efca-feature__price { font-weight: var(--efca-fw-black); color: var(--efca-color-accent-deep); }
+
+/* Sélecteur de VERSION (orange / bleu) — bandeau de comparaison en haut, retirable */
+.efca-themer {
+  display: flex; gap: 0.5rem; align-items: center; justify-content: center; flex-wrap: wrap;
+  background: var(--efca-color-ink); color: #fff; padding: 0.55rem 1rem; font-size: 0.85rem;
+}
+.efca-themer__label { font-weight: var(--efca-fw-bold); text-transform: uppercase; letter-spacing: 0.08em; opacity: 0.92; }
+.efca-themer button, .efca-themer__btn {
+  display: inline-block; border: 2px solid rgba(255,255,255,0.35); cursor: pointer; border-radius: 999px;
+  padding: 0.35rem 1.1rem; font: inherit; font-weight: var(--efca-fw-bold); font-size: 0.8rem;
+  background: transparent; color: #fff; text-decoration: none; transition: background var(--efca-transition);
+}
+.efca-themer button[aria-pressed="true"], .efca-themer__btn.is-active { background: var(--efca-color-primary); border-color: var(--efca-color-primary); color: var(--efca-color-on-primary); }
+
+/* =============================================================================
+   VERSION 2 — THÈME BLEU (prédominance turquoise/bleu, orange en accent)
+   Activé par la classe body.theme-bleu (sélecteur de version).
+   Le logo garde ses couleurs fixes (e turquoise + FOIL orange).
+   ============================================================================= */
+body.theme-bleu {
+  --efca-color-primary:        #0A7FB0;   /* azur océan, franc */
+  --efca-color-primary-hover:  #086B95;
+  --efca-color-primary-border: #075C80;
+  --efca-color-accent:         #F4631F;   /* orange en accent/pop */
+  --efca-color-accent-deep:    #C44A0F;
+  --efca-color-secondary:      #CDE8F5;
+  --efca-color-secondary-hover:#DCF0FB;
+  --efca-color-mint-100:       #E2F1FA;
+  --efca-color-mint-200:       #BFE0F2;
+  --efca-color-star:           #F4631F;
+  --efca-shadow-glow:          0 4px 12px rgba(10, 127, 176, 0.42);
+}
+
+/* =============================================================================
+   BLOC CHIFFRES (impact, fond sombre)
+   ============================================================================= */
+.efca-figures { background: var(--efca-color-ink); color: #fff; }
+.efca-figures__grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: var(--efca-space-lg); text-align: center; }
+@media (min-width: 768px) { .efca-figures__grid { grid-template-columns: repeat(4, 1fr); } }
+.efca-figures__num { font-size: var(--efca-fs-stat); font-weight: var(--efca-fw-black); line-height: 1; color: var(--efca-color-primary); }
+.efca-figures__label { opacity: 0.85; margin-top: var(--efca-space-3xs); }
+
+/* =============================================================================
+   FICHE GOOGLE (reprise visuelle du profil Google Business)
+   ============================================================================= */
+.efca-gcard { background: #fff; border-radius: var(--efca-radius-md); box-shadow: var(--efca-shadow-md); border: 1px solid #ECEFEC; padding: var(--efca-space-md); }
+.efca-gcard__head { display: flex; align-items: flex-start; gap: var(--efca-space-sm); }
+.efca-gcard__g { flex: none; width: 40px; height: 40px; border-radius: 999px; display: grid; place-items: center; box-shadow: var(--efca-shadow-sm); font-weight: 900; font-size: 1.25rem; background: #fff; }
+.efca-gcard__g span:nth-child(1){color:#4285F4} .efca-gcard__g span:nth-child(2){color:#EA4335} .efca-gcard__g span:nth-child(3){color:#FBBC05} .efca-gcard__g span:nth-child(4){color:#34A853}
+.efca-gcard__name { font-weight: var(--efca-fw-bold); font-size: var(--efca-fs-h4); color: var(--efca-color-ink); line-height: 1.2; }
+.efca-gcard__cat { color: var(--efca-color-text-muted); font-size: var(--efca-fs-small); }
+.efca-gcard__rating { display: flex; align-items: center; gap: 0.4rem; margin: var(--efca-space-2xs) 0; font-weight: var(--efca-fw-bold); flex-wrap: wrap; }
+.efca-gcard__score { color: #E7711B; font-weight: var(--efca-fw-black); font-size: 1.1rem; }
+.efca-gcard__rating .efca-stars { color: #FBBC05; letter-spacing: 0.04em; }
+.efca-gcard__rating small { color: var(--efca-color-text-muted); font-weight: var(--efca-fw-regular); }
+.efca-gcard__meta { display: flex; flex-direction: column; gap: 0.4rem; margin-top: var(--efca-space-sm); font-size: var(--efca-fs-small); color: var(--efca-color-text); }
+.efca-gcard__meta .efca-gcard__open { color: var(--efca-color-success); font-weight: var(--efca-fw-bold); }
+.efca-gcard__actions { display: flex; gap: var(--efca-space-2xs); margin-top: var(--efca-space-md); flex-wrap: wrap; }
+.efca-gcard__photos { display: grid; grid-template-columns: repeat(3, 1fr); gap: 6px; margin-top: var(--efca-space-sm); }
+.efca-gcard__photos img { width: 100%; aspect-ratio: 1 / 1; object-fit: cover; border-radius: var(--efca-radius-xs); }

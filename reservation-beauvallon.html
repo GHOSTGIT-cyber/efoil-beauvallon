@@ -1,0 +1,170 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Réserver une session eFoil — COMO Le Beauvallon, golfe de Saint-Tropez</title>
+<meta name="description" content="Réservez votre session d'eFoil au départ du ponton du domaine COMO Le Beauvallon. Demande sans paiement — on vous recontacte pour confirmer le créneau.">
+<meta name="robots" content="noindex,follow">
+<style>
+@font-face{font-family:'Archivo Expanded';src:url('/assets/fonts/archivo-latin-standard-normal.woff2') format('woff2-variations');font-weight:200 400;font-stretch:62% 125%;font-style:normal;font-display:swap}
+@font-face{font-family:'Switzer';src:url('/assets/fonts/Switzer-Regular.woff2') format('woff2');font-weight:400;font-style:normal;font-display:swap}
+@font-face{font-family:'Switzer';src:url('/assets/fonts/Switzer-Medium.woff2') format('woff2');font-weight:500;font-style:normal;font-display:swap}
+:root{
+  --cream:#f7f1e6;--sand:#efe6d4;--ink:#2a2218;--taupe:#574d3f;--line:rgba(43,36,25,.14);
+  --terra:#cf5836;--terra-deep:#b1431f;--gold:#e0a92e;--white:#fff;
+  --ff-d:'Archivo Expanded','Arial Narrow',system-ui,sans-serif;
+  --ff-b:'Switzer',system-ui,-apple-system,'Segoe UI',Roboto,sans-serif;
+}
+*{box-sizing:border-box}
+body{margin:0;font-family:var(--ff-b);color:var(--ink);background:var(--cream);line-height:1.6;-webkit-font-smoothing:antialiased}
+a{color:inherit}
+.wrap{max-width:760px;margin-inline:auto;padding:clamp(20px,5vw,56px)}
+.top{display:flex;justify-content:space-between;align-items:center;padding:16px clamp(20px,5vw,56px);border-bottom:1px solid var(--line)}
+.brand{font-family:var(--ff-d);font-stretch:118%;text-transform:uppercase;letter-spacing:.14em;font-size:1rem;font-weight:300}
+.brand i{font-style:normal;color:var(--terra)}
+.back{font-size:.8rem;letter-spacing:.12em;text-transform:uppercase;color:var(--taupe);text-decoration:none}
+.eyebrow{font-family:var(--ff-d);font-stretch:110%;text-transform:uppercase;letter-spacing:.26em;font-size:.72rem;color:var(--taupe);display:inline-flex;align-items:center;gap:.7em}
+.eyebrow::before{content:"";width:34px;height:1px;background:var(--terra)}
+h1{font-family:var(--ff-d);font-weight:230;font-stretch:125%;text-transform:uppercase;letter-spacing:.04em;line-height:.96;font-size:clamp(2rem,6vw,3.4rem);margin:.5rem 0 0}
+.lead{color:var(--taupe);max-width:48ch;margin-top:1rem}
+form{margin-top:clamp(28px,5vw,44px);display:grid;gap:1.4rem}
+fieldset{border:0;margin:0;padding:0}
+legend{font-family:var(--ff-d);font-stretch:106%;text-transform:uppercase;letter-spacing:.16em;font-size:.74rem;color:var(--terra-deep);margin-bottom:.7rem}
+.formules{display:grid;grid-template-columns:1fr;gap:.7rem}
+@media(min-width:620px){.formules{grid-template-columns:repeat(3,1fr)}}
+.formule{position:relative;border:1px solid var(--line);border-radius:2px;padding:1rem;cursor:pointer;background:var(--white);transition:border-color .2s,box-shadow .2s}
+.formule:hover{border-color:var(--taupe)}
+.formule input{position:absolute;opacity:0}
+.formule input:checked+.fbox{}
+.formule:has(input:checked){border-color:var(--terra);box-shadow:0 0 0 1px var(--terra)}
+.fbox b{font-family:var(--ff-d);font-stretch:108%;text-transform:uppercase;letter-spacing:.06em;font-weight:300;font-size:1.02rem;display:block}
+.fbox span{color:var(--taupe);font-size:.86rem}
+.fbox em{display:block;font-style:normal;color:var(--terra-deep);font-weight:500;margin-top:.4rem;font-size:.9rem}
+.grid2{display:grid;grid-template-columns:1fr;gap:1.1rem}
+@media(min-width:620px){.grid2{grid-template-columns:1fr 1fr}}
+label.fld{display:block;font-size:.82rem;letter-spacing:.04em;color:var(--taupe);margin-bottom:.35rem}
+input,select,textarea{width:100%;font-family:var(--ff-b);font-size:1rem;color:var(--ink);background:var(--white);border:1px solid var(--line);border-radius:2px;padding:.7rem .8rem}
+input:focus,select:focus,textarea:focus{outline:2px solid var(--terra);outline-offset:1px;border-color:var(--terra)}
+textarea{min-height:90px;resize:vertical}
+.btn{font-family:var(--ff-d);font-stretch:108%;font-weight:500;text-transform:uppercase;letter-spacing:.16em;font-size:.84rem;
+  background:var(--terra-deep);color:var(--white);border:0;border-radius:2px;padding:1.05em 2.1em;cursor:pointer;transition:background .2s}
+.btn:hover{background:#c8502b}
+.note{font-size:.8rem;color:var(--taupe)}
+.req::after{content:" *";color:var(--terra)}
+.ok{display:none}
+.ok.show{display:block;text-align:center;padding:clamp(30px,6vw,60px) 0}
+.ok h2{font-family:var(--ff-d);font-weight:230;font-stretch:125%;text-transform:uppercase;letter-spacing:.04em;font-size:clamp(1.8rem,5vw,2.8rem);margin:0}
+.ok .dot{width:54px;height:54px;border-radius:50%;background:var(--gold);display:grid;place-items:center;margin:0 auto 1.4rem;color:var(--ink);font-size:1.6rem}
+.recap{margin:1.6rem auto 0;max-width:420px;text-align:left;border:1px solid var(--line);border-radius:2px;padding:1.2rem;background:var(--white)}
+.recap dt{font-family:var(--ff-d);font-stretch:104%;text-transform:uppercase;letter-spacing:.16em;font-size:.62rem;color:var(--taupe);margin-top:.7rem}
+.recap dd{margin:.1rem 0 0}
+.foot{margin-top:2.4rem;padding-top:1.4rem;border-top:1px solid var(--line);font-size:.82rem;color:var(--taupe)}
+</style>
+</head>
+<body>
+<div class="top">
+  <a class="brand" href="como-beauvallon-v1-coucher-de-soleil.html"><i>e</i>Foil · Côte d'Azur</a>
+  <a class="back" href="como-beauvallon-v1-coucher-de-soleil.html">← Retour</a>
+</div>
+
+<div class="wrap">
+  <main id="resa">
+    <p class="eyebrow">Réservation</p>
+    <h1>Réservez votre session</h1>
+    <p class="lead">Au départ du ponton du domaine <strong>COMO Le Beauvallon</strong>, golfe de Saint-Tropez. Choisissez votre formule et votre créneau : <strong>aucun paiement à cette étape</strong> — on vous recontacte sous 24 h pour confirmer.</p>
+
+    <form id="form" novalidate>
+      <fieldset>
+        <legend>Votre formule</legend>
+        <div class="formules">
+          <label class="formule"><input type="radio" name="formule" value="Découverte (1 h)" checked>
+            <span class="fbox"><b>Découverte</b><span>1 h · initiation encadrée</span><em>dès 150 €</em></span></label>
+          <label class="formule"><input type="radio" name="formule" value="Progression (pack 3 sessions)">
+            <span class="fbox"><b>Progression</b><span>pack 3 sessions</span><em>sur devis</em></span></label>
+          <label class="formule"><input type="radio" name="formule" value="Bon cadeau">
+            <span class="fbox"><b>Bon cadeau</b><span>montant libre</span><em>à offrir</em></span></label>
+        </div>
+      </fieldset>
+
+      <div class="grid2">
+        <div><label class="fld req" for="date">Date souhaitée</label><input type="date" id="date" name="date" required></div>
+        <div><label class="fld" for="creneau">Créneau</label>
+          <select id="creneau" name="creneau">
+            <option>Matin (eaux calmes)</option><option>Midi</option><option>Fin de journée (golden hour)</option><option>Flexible</option>
+          </select></div>
+      </div>
+
+      <div class="grid2">
+        <div><label class="fld" for="pers">Nombre de personnes</label>
+          <select id="pers" name="pers"><option>1</option><option>2</option><option>3</option><option>4+</option></select></div>
+        <div><label class="fld req" for="niveau">Niveau</label>
+          <select id="niveau" name="niveau"><option>Débutant</option><option>Déjà essayé</option><option>Confirmé</option></select></div>
+      </div>
+
+      <div class="grid2">
+        <div><label class="fld req" for="nom">Nom</label><input type="text" id="nom" name="nom" autocomplete="name" required></div>
+        <div><label class="fld req" for="tel">Téléphone</label><input type="tel" id="tel" name="tel" autocomplete="tel" required></div>
+      </div>
+
+      <div><label class="fld req" for="email">Email</label><input type="email" id="email" name="email" autocomplete="email" required></div>
+      <div><label class="fld" for="msg">Message (optionnel)</label><textarea id="msg" name="msg" placeholder="Une précision, une occasion particulière…"></textarea></div>
+
+      <div style="display:flex;flex-wrap:wrap;gap:1rem;align-items:center">
+        <button type="submit" class="btn">Envoyer ma demande</button>
+        <span class="note">Sans paiement. Confirmation par téléphone/email.</span>
+      </div>
+    </form>
+  </main>
+
+  <section class="ok" id="ok" aria-live="polite">
+    <div class="dot">✓</div>
+    <p class="eyebrow" style="justify-content:center">Demande envoyée</p>
+    <h2>Merci, <span id="ok-nom">à vous</span> !</h2>
+    <p class="lead" style="margin-inline:auto">Votre demande est enregistrée. On vous recontacte sous 24 h pour <strong>confirmer le créneau</strong> — aucun paiement n'a été demandé.</p>
+    <dl class="recap" id="recap"></dl>
+    <p style="margin-top:1.6rem"><a class="btn" href="como-beauvallon-v1-coucher-de-soleil.html">Retour à l'accueil</a></p>
+  </section>
+
+  <p class="foot">
+    Une question ? Appelez le <a href="tel:{{TÉLÉPHONE_E164}}">{{TÉLÉPHONE}}</a>.<br>
+    <!-- BACKEND : ce formulaire est front-only (aucun paiement). À brancher sur un endpoint
+         (REST WordPress / CPT « reservation » / Odoo, ou un simple envoi email/mailto)
+         là où c'est indiqué dans le script ci-dessous. -->
+  </p>
+</div>
+
+<script>
+(function(){
+  var form=document.getElementById('form'), ok=document.getElementById('ok'), resa=document.getElementById('resa');
+  if(!form) return;
+  form.addEventListener('submit',function(e){
+    e.preventDefault();
+    // validation minimale
+    var required=form.querySelectorAll('[required]'); var bad=null;
+    required.forEach(function(el){ if(!el.value.trim()){ el.style.borderColor='#cf5836'; if(!bad) bad=el; } });
+    if(bad){ bad.focus(); return; }
+    var d=new FormData(form), data={};
+    d.forEach(function(v,k){ data[k]=v; });
+
+    /* ===== À BRANCHER : envoi réel (sans paiement) =====
+       Exemple : fetch('/wp-json/efca/v1/reservation',{method:'POST',
+         headers:{'Content-Type':'application/json'}, body:JSON.stringify(data)});
+       ou un mailto de secours :
+       location.href='mailto:contact@efoilcotedazur.fr?subject=Réservation%20Beauvallon&body='+encodeURIComponent(JSON.stringify(data,null,2));
+       Ici on continue simplement vers la confirmation. */
+
+    document.getElementById('ok-nom').textContent = data.nom || 'à vous';
+    var recap=document.getElementById('recap');
+    var rows=[['Formule',data.formule],['Date',data.date||'à définir'],['Créneau',data.creneau],
+              ['Personnes',data.pers],['Niveau',data.niveau],['Contact',(data.tel||'')+' · '+(data.email||'')]];
+    recap.innerHTML=rows.map(function(r){return '<dt>'+r[0]+'</dt><dd>'+(r[1]||'—')+'</dd>';}).join('');
+    resa.style.display='none'; ok.classList.add('show');
+    window.scrollTo({top:0,behavior:'smooth'});
+  });
+  // date mini = aujourd'hui
+  var dt=document.getElementById('date'); if(dt){var t=new Date();if(!isNaN(t)){dt.min=t.toISOString().slice(0,10);}}
+})();
+</script>
+</body>
+</html>

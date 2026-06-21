@@ -1,0 +1,36 @@
+# === Sources brutes (grosses photos + vidéos originales) ===
+# Les WebP optimisés dans assets/img/ sont bien inclus (2,8 Mo total)
+medias/cannes/
+medias/esterel/
+medias/iles-lerins/
+medias/saint-tropez/
+medias/videos-cotedazur/
+medias/videos-espagne/
+medias/dubai/
+medias/reel/
+medias/como-web/
+medias/video-frames/
+medias/_contact-sheet.jpg
+
+# Garde les previews Como Beauvallon (HTML léger, pas de binaires)
+# medias/como-beauvallon/ → inclus intentionnellement
+
+# === OS / IDE ===
+.DS_Store
+Thumbs.db
+desktop.ini
+.idea/
+.vscode/settings.json
+*.swp
+*.swo
+
+# === Node (si on ajoute un build tool plus tard) ===
+node_modules/
+.env
+.env.local
+
+# === WordPress local ===
+wordpress/*.log
+
+# === Videos lourdes : hors git (hebergement externe / Git LFS au deploiement) ===
+assets/video/

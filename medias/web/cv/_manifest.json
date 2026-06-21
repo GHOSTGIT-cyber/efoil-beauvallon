@@ -1,0 +1,252 @@
+{
+ "aer": [
+  {
+   "name": "aer-01",
+   "w": 1600,
+   "h": 900,
+   "src": "medias/video-frames/drone/aw-040.2.jpg"
+  },
+  {
+   "name": "aer-02",
+   "w": 1600,
+   "h": 900,
+   "src": "medias/video-frames/drone/aw-035.4.jpg"
+  },
+  {
+   "name": "aer-03",
+   "w": 1600,
+   "h": 900,
+   "src": "medias/video-frames/drone/aw-018.6.jpg"
+  },
+  {
+   "name": "aer-04",
+   "w": 1600,
+   "h": 900,
+   "src": "medias/video-frames/drone/aw-023.4.jpg"
+  },
+  {
+   "name": "aer-05",
+   "w": 1600,
+   "h": 900,
+   "src": "medias/video-frames/drone/aw-017.0.jpg"
+  },
+  {
+   "name": "aer-06",
+   "w": 1280,
+   "h": 2276,
+   "src": "medias/video-frames/auto/ve-39.jpg"
+  },
+  {
+   "name": "aer-07",
+   "w": 1280,
+   "h": 2276,
+   "src": "medias/video-frames/auto/to-08.jpg"
+  },
+  {
+   "name": "aer-08",
+   "w": 1280,
+   "h": 2276,
+   "src": "medias/video-frames/auto/to-02.jpg"
+  },
+  {
+   "name": "aer-09",
+   "w": 1280,
+   "h": 2276,
+   "src": "medias/video-frames/auto/fo-05.jpg"
+  },
+  {
+   "name": "aer-10",
+   "w": 1280,
+   "h": 720,
+   "src": "medias/video-frames/auto/aw-38.jpg"
+  },
+  {
+   "name": "aer-11",
+   "w": 1280,
+   "h": 2276,
+   "src": "medias/video-frames/auto/res-57.jpg"
+  },
+  {
+   "name": "aer-12",
+   "w": 1280,
+   "h": 2276,
+   "src": "medias/video-frames/auto/res-39.jpg"
+  },
+  {
+   "name": "aer-13",
+   "w": 1280,
+   "h": 2276,
+   "src": "medias/video-frames/auto/res-33.jpg"
+  },
+  {
+   "name": "aer-14",
+   "w": 1280,
+   "h": 720,
+   "src": "medias/video-frames/auto/aw-10.jpg"
+  },
+  {
+   "name": "aer-15",
+   "w": 1280,
+   "h": 720,
+   "src": "medias/video-frames/auto/aw-14.jpg"
+  },
+  {
+   "name": "aer-16",
+   "w": 1280,
+   "h": 720,
+   "src": "medias/video-frames/auto/aw-30.jpg"
+  },
+  {
+   "name": "aer-17",
+   "w": 1280,
+   "h": 720,
+   "src": "medias/video-frames/auto/aw-34.jpg"
+  },
+  {
+   "name": "aer-18",
+   "w": 1280,
+   "h": 720,
+   "src": "medias/video-frames/auto/aw-42.jpg"
+  },
+  {
+   "name": "aer-19",
+   "w": 1280,
+   "h": 2276,
+   "src": "medias/video-frames/auto/pu-14.jpg"
+  },
+  {
+   "name": "aer-20",
+   "w": 1280,
+   "h": 2276,
+   "src": "medias/video-frames/auto/res-63.jpg"
+  },
+  {
+   "name": "aer-21",
+   "w": 1280,
+   "h": 720,
+   "src": "medias/video-frames/auto/aw-02.jpg"
+  },
+  {
+   "name": "aer-22",
+   "w": 1280,
+   "h": 720,
+   "src": "medias/video-frames/auto/aw-22.jpg"
+  },
+  {
+   "name": "aer-23",
+   "w": 1280,
+   "h": 2276,
+   "src": "medias/video-frames/auto/res-09.jpg"
+  },
+  {
+   "name": "aer-24",
+   "w": 1280,
+   "h": 720,
+   "src": "medias/video-frames/auto/aw-58.jpg"
+  },
+  {
+   "name": "aer-25",
+   "w": 1280,
+   "h": 2276,
+   "src": "medias/video-frames/auto/ve-03.jpg"
+  },
+  {
+   "name": "aer-26",
+   "w": 900,
+   "h": 506,
+   "src": "medias/video-frames/awaking-65.jpg"
+  },
+  {
+   "name": "aer-27",
+   "w": 1600,
+   "h": 899,
+   "src": "medias/cannes/Cannes_Cote-85.jpg"
+  },
+  {
+   "name": "aer-28",
+   "w": 1600,
+   "h": 1067,
+   "src": "medias/cannes/Cannes_Cote-53.jpg"
+  },
+  {
+   "name": "aer-29",
+   "w": 1600,
+   "h": 2843,
+   "src": "medias/cannes/Cannes_Cote-155.jpg"
+  },
+  {
+   "name": "aer-30",
+   "w": 1600,
+   "h": 2000,
+   "src": "medias/cannes/Cannes_Cote-57.jpg"
+  },
+  {
+   "name": "aer-31",
+   "w": 1600,
+   "h": 1067,
+   "src": "medias/cannes/Cannes_Cote-61.jpg"
+  },
+  {
+   "name": "aer-32",
+   "w": 1600,
+   "h": 1067,
+   "src": "medias/cannes/Cannes_Cote-58.jpg"
+  },
+  {
+   "name": "aer-33",
+   "w": 1600,
+   "h": 899,
+   "src": "medias/cannes/Cannes_Cote-56.jpg"
+  },
+  {
+   "name": "aer-34",
+   "w": 1600,
+   "h": 899,
+   "src": "medias/cannes/Cannes_Cote-83.jpg"
+  },
+  {
+   "name": "aer-35",
+   "w": 1600,
+   "h": 899,
+   "src": "medias/cannes/Cannes_Cote-118.jpg"
+  },
+  {
+   "name": "aer-36",
+   "w": 1600,
+   "h": 1067,
+   "src": "medias/saint-tropez/Stropez_day2-7.jpg"
+  },
+  {
+   "name": "aer-37",
+   "w": 1600,
+   "h": 1067,
+   "src": "medias/saint-tropez/Stropez_day2-11.jpg"
+  }
+ ],
+ "hero": {
+  "hero-orange": {
+   "w": 1920,
+   "h": 1080
+  },
+  "hero-bleu": {
+   "w": 1920,
+   "h": 1080
+  },
+  "hero-como": {
+   "w": 1920,
+   "h": 1080
+  },
+  "hero-orange-v": {
+   "w": 1280,
+   "h": 2276
+  },
+  "hero-bleu-v": {
+   "w": 1280,
+   "h": 2276
+  },
+  "hero-como-v": {
+   "w": 1280,
+   "h": 2276
+  }
+ }
+}

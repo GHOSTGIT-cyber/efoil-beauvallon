@@ -1,0 +1,28 @@
+{
+  "categories": [
+    {"id":"top","name":"Pepite"},
+    {"id":"aerien","name":"Vue aerienne"},
+    {"id":"sunset","name":"Coucher de soleil"},
+    {"id":"rider","name":"Rider / sur planche"},
+    {"id":"beach","name":"Beach club / parasols"},
+    {"id":"lieu","name":"Lieu / chateau"},
+    {"id":"yacht","name":"Yachts / port"},
+    {"id":"rock","name":"Roche rouge"},
+    {"id":"detail","name":"Detail / materiel"},
+    {"id":"proscrire","name":"A proscrire"},
+    {"id":"pedagogue","name":"pedagogue"}
+  ],
+  "packs": {
+    "top": ["medias/video-frames/awaking-65.jpg","medias/video-frames/auto/ve-39.jpg","medias/video-frames/drone/aw-040.2.jpg","medias/video-frames/drone/aw-035.4.jpg","medias/video-frames/auto/to-08.jpg","medias/video-frames/auto/to-02.jpg","medias/video-frames/auto/fo-05.jpg","medias/video-frames/auto/aw-38.jpg","medias/cannes/Cannes_Cote-85.jpg","medias/cannes/Cannes_Cote-53.jpg","medias/cannes/Cannes_Cote-155.jpg","medias/como-web/raw/location.jpg"],
+    "aerien": ["medias/como-web/raw/dining1.jpg","medias/video-frames/drone/aw-018.6.jpg","medias/video-frames/auto/res-57.jpg","medias/video-frames/auto/res-39.jpg","medias/video-frames/auto/aw-10.jpg","medias/video-frames/auto/aw-42.jpg","medias/video-frames/auto/pu-14.jpg","medias/video-frames/auto/res-33.jpg","medias/como-web/raw/hero.jpg","medias/video-frames/auto/aw-14.jpg","medias/cannes/Cannes_Cote-57.jpg","medias/cannes/Cannes_Cote-61.jpg","medias/cannes/Cannes_Cote-58.jpg","medias/cannes/Cannes_Cote-56.jpg","medias/cannes/Cannes_Cote-83.jpg","medias/video-frames/auto/aw-30.jpg","medias/cannes/Cannes_Cote-118.jpg","medias/video-frames/auto/aw-34.jpg"],
+    "sunset": ["medias/video-frames/auto/res-63.jpg","medias/video-frames/drone/aw-023.4.jpg","medias/saint-tropez/Stropez_day2-11.jpg","medias/video-frames/auto/aw-02.jpg","medias/como-web/raw/wellness.jpg","medias/video-frames/auto/aw-22.jpg","medias/video-frames/auto/res-09.jpg","medias/saint-tropez/Stropez_day2-7.jpg","medias/video-frames/auto/aw-58.jpg","medias/video-frames/auto/ve-03.jpg"],
+    "rider": ["medias/video-frames/drone/aw-043.4.jpg","medias/video-frames/esp-torre-65.jpg","medias/video-frames/resume-65.jpg","medias/video-frames/drone/aw-044.2.jpg","medias/video-frames/drone/aw-005.0.jpg","medias/video-frames/drone/aw-006.6.jpg","medias/video-frames/auto/aw-06.jpg","medias/iles-lerins/Post_4x5-26_First.jpg","medias/iles-lerins/Post_4x5-25_Secondd.jpg","medias/iles-lerins/Post_4x5-24_Three.jpg","medias/video-frames/drone/aw-042.6.jpg","medias/cannes/Cannes_Cote-126.jpg","medias/cannes/Cannes_Cote-125.jpg","medias/cannes/Cannes_Cote-109.jpg","medias/video-frames/auto/aw-18.jpg","medias/como-beauvallon/a715426f-04a3-4407-abce-65a7dffb1f08.JPG","medias/cannes/Cannes_Cote-30.jpg","medias/cannes/Cannes_Cote-134.jpg","medias/cannes/Cannes_Cote-146.jpg","medias/cannes/Cannes_Cote-135.jpg","medias/cannes/Cannes_Cote-153.jpg","medias/video-frames/auto/res-15.jpg","medias/cannes/Cannes_Cote-167.jpg","medias/cannes/Cannes_Cote-189.jpg","medias/cannes/Cannes_Cote-190.jpg","medias/cannes/Cannes_Cote-194.jpg"],
+    "beach": ["medias/cannes/Cannes_day1-4.jpg","medias/cannes/Cannes_day1-2.jpg","medias/como-web/raw/exp2.jpg","medias/como-web/raw/acc1.jpg"],
+    "lieu": ["medias/cannes/Cannes_Cote-50.jpg","medias/video-frames/drone/aw-017.0.jpg"],
+    "yacht": ["medias/cannes/Cannes_Cote-45.jpg","medias/video-frames/auto/aw-46.jpg","medias/cannes/Cannes_Cote-180.jpg","medias/cannes/Cannes_Cote-182.jpg","medias/cannes/Cannes_Cote-36.jpg","medias/cannes/Cannes_Cote-177.jpg"],
+    "rock": ["medias/cannes/Cannes_Cote-131.jpg","medias/cannes/Cannes_Cote-129.jpg","medias/cannes/Cannes_Cote-120.jpg","medias/cannes/Cannes_Cote-99.jpg","medias/cannes/Cannes_Cote-96.jpg","medias/cannes/Cannes_Cote-94.jpg","medias/cannes/Cannes_Cote-90.jpg","medias/cannes/Cannes_Cote-86.jpg","medias/cannes/Cannes_Cote-73.jpg","medias/cannes/Cannes_Cote-64.jpg"],
+    "detail": ["medias/video-frames/drone/aw-034.6.jpg"],
+    "proscrire": ["medias/como-web/raw/exp1.jpg","medias/como-web/raw/dining2.jpg","medias/video-frames/auto/res-03.jpg","medias/video-frames/auto/to-11.jpg","medias/video-frames/auto/ve-15.jpg","medias/video-frames/auto/ve-09.jpg","medias/cannes/Cannes_Cote-184.jpg","medias/cannes/Cannes_Cote-187.jpg","medias/cannes/Cannes_Cote-173.jpg","medias/cannes/Cannes_Cote-172.jpg","medias/video-frames/auto/res-51.jpg","medias/video-frames/auto/fo-08.jpg","medias/video-frames/drone/aw-005.8.jpg","medias/cannes/Cannes_Cote-103.jpg","medias/video-frames/auto/pu-05.jpg","medias/cannes/Cannes_Cote-110.jpg","medias/cannes/Cannes_Cote-162.jpg","medias/cannes/Cannes_Cote-164.jpg","medias/cannes/Cannes_Cote-22.jpg"],
+    "pedagogue": ["medias/cannes/Cannes_Cote-4.jpg","medias/cannes/Cannes_Cote-3.jpg","medias/cannes/Cannes_Cote-2.jpg","medias/como-beauvallon/6f9dea10-981b-4b23-8fde-4a21f87acd52.JPG","medias/esterel/Post_4x5-5.jpg","medias/como-beauvallon/19a1d93b-24c7-4ce7-8e34-fc634e6ce764.JPG","medias/cannes/Cannes_Cote-161.jpg"]
+  }
+}

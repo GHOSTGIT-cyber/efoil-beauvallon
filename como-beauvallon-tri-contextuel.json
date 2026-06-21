@@ -1,0 +1,132 @@
+{
+  "version": 2,
+  "tool": "trieur-contextuel",
+  "projet": "como-beauvallon",
+  "slots": {
+    "HERO_VIDEO": [
+      "medias/como-web/raw/location.jpg"
+    ],
+    "LIEU": [
+      "medias/como-web/raw/hero.jpg"
+    ],
+    "GALERIE_DEFILE": [
+      "medias/cannes/Cannes_Cote-85.jpg",
+      "medias/video-frames/drone/aw-040.2.jpg",
+      "medias/video-frames/auto/ve-39.jpg",
+      "medias/cannes/Cannes_Cote-129.jpg",
+      "medias/cannes/Cannes_Cote-135.jpg"
+    ],
+    "EXP_1": [
+      "medias/video-frames/drone/aw-040.2.jpg"
+    ],
+    "EXP_2": [
+      "medias/cannes/Cannes_Cote-155.jpg"
+    ],
+    "EXP_3": [
+      "medias/como-beauvallon/19a1d93b-24c7-4ce7-8e34-fc634e6ce764.JPG"
+    ],
+    "WHO_1": [
+      "medias/como-beauvallon/a715426f-04a3-4407-abce-65a7dffb1f08.JPG"
+    ],
+    "WHO_2": [
+      "medias/cannes/Cannes_Cote-135.jpg"
+    ],
+    "WHO_3": [
+      "medias/como-beauvallon/6f9dea10-981b-4b23-8fde-4a21f87acd52.JPG"
+    ],
+    "WHO_4": [
+      "medias/video-frames/drone/aw-034.6.jpg"
+    ],
+    "RIDE_1": [
+      "medias/video-frames/drone/aw-035.4.jpg"
+    ],
+    "RIDE_2": [
+      "medias/cannes/Cannes_Cote-126.jpg"
+    ],
+    "RIDE_3": [
+      "medias/video-frames/auto/to-02.jpg"
+    ],
+    "RIDE_4": [
+      "medias/cannes/Cannes_Cote-58.jpg"
+    ],
+    "RIDE_5": [
+      "medias/video-frames/awaking-65.jpg"
+    ],
+    "RIDE_6": [
+      "medias/cannes/Cannes_Cote-226.jpg"
+    ],
+    "RIDE_7": [
+      "medias/cannes/Cannes_Cote-129.jpg"
+    ],
+    "RIDE_8": [
+      "medias/video-frames/auto/to-08.jpg"
+    ],
+    "RIDE_9": [
+      "medias/cannes/Cannes_Cote-131.jpg"
+    ],
+    "RIDE_10": [
+      "medias/video-frames/auto/aw-58.jpg"
+    ],
+    "RIDE_11": [
+      "medias/cannes/Cannes_Cote-219.jpg"
+    ],
+    "RIDE_12": [
+      "medias/esterel/Post_4x5-5.jpg"
+    ],
+    "RIDE_13": [
+      "medias/cannes/Cannes_Cote-85.jpg"
+    ],
+    "RIDE_14": [
+      "medias/video-frames/auto/aw-38.jpg"
+    ],
+    "SESSION_1": [
+      "medias/cannes/Cannes_Cote-4.jpg"
+    ],
+    "SESSION_2": [
+      "medias/cannes/Cannes_Cote-217.jpg"
+    ],
+    "SESSION_3": [
+      "medias/cannes/Cannes_Cote-161.jpg"
+    ],
+    "SESSION_4": [
+      "medias/iles-lerins/Post_4x5-26_First.jpg"
+    ],
+    "BEACH_1": [
+      "medias/como-web/raw/dining1.jpg"
+    ],
+    "BEACH_2": [
+      "medias/como-web/raw/exp2.jpg"
+    ],
+    "SPOT": [
+      "medias/video-frames/auto/aw-30.jpg"
+    ]
+  },
+  "proscrire": [
+    "medias/como-web/raw/exp1.jpg",
+    "medias/como-web/raw/dining2.jpg",
+    "medias/video-frames/auto/res-03.jpg",
+    "medias/video-frames/auto/to-11.jpg",
+    "medias/video-frames/auto/ve-15.jpg",
+    "medias/video-frames/auto/ve-09.jpg",
+    "medias/cannes/Cannes_Cote-184.jpg",
+    "medias/cannes/Cannes_Cote-187.jpg",
+    "medias/cannes/Cannes_Cote-173.jpg",
+    "medias/cannes/Cannes_Cote-172.jpg",
+    "medias/video-frames/auto/res-51.jpg",
+    "medias/video-frames/auto/fo-08.jpg",
+    "medias/video-frames/drone/aw-005.8.jpg",
+    "medias/cannes/Cannes_Cote-103.jpg",
+    "medias/video-frames/auto/pu-05.jpg",
+    "medias/cannes/Cannes_Cote-110.jpg",
+    "medias/cannes/Cannes_Cote-162.jpg",
+    "medias/cannes/Cannes_Cote-164.jpg",
+    "medias/cannes/Cannes_Cote-22.jpg"
+  ],
+  "counts": {
+    "remplis": 30,
+    "total_slots": 30,
+    "mosaique": 5,
+    "proscrire": 19
+  },
+  "pool_total": 120
+}
