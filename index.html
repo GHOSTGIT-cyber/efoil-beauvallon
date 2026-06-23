@@ -429,6 +429,23 @@ html,body{margin:0}
 .cb-root #cb-booking{margin-top:1.4rem}
 .cb-book .cb-btn{margin-top:1.4rem}
 
+/* -- TARIFS -- */
+.cb-tarifs__grid{margin-top:clamp(34px,5vw,58px);display:grid;grid-template-columns:1fr;gap:clamp(16px,2vw,22px)}
+@media(min-width:640px){.cb-tarifs__grid{grid-template-columns:repeat(2,1fr)}}
+@media(min-width:1040px){.cb-tarifs__grid{grid-template-columns:repeat(4,1fr)}}
+.cb-tarif{position:relative;display:flex;flex-direction:column;gap:.7rem;padding:clamp(22px,2.4vw,32px);background:var(--cb-cream);border:1px solid var(--cb-line)}
+.cb-tarif--feature{border-color:var(--cb-terra);box-shadow:0 14px 50px -28px var(--cb-terra)}
+.cb-tarif__tag{position:absolute;top:-11px;left:clamp(22px,2.4vw,32px);background:var(--cb-terra);color:#fff;font-family:var(--cb-ff-display);font-size:.62rem;letter-spacing:.16em;text-transform:uppercase;padding:.32em .8em}
+.cb-tarif__name{font-family:var(--cb-ff-display);font-stretch:108%;font-weight:300;text-transform:uppercase;letter-spacing:.06em;font-size:.96rem;color:var(--cb-teal-900)}
+.cb-tarif__price{font-family:var(--cb-ff-display);font-weight:200;font-stretch:120%;font-size:clamp(2.1rem,4vw,2.7rem);line-height:1;color:var(--cb-terra-deep)}
+.cb-tarif__desc{color:var(--cb-teal-700);font-size:.9rem;line-height:1.55}
+.cb-tarifs__foot{margin-top:clamp(30px,4vw,48px);display:flex;flex-wrap:wrap;align-items:flex-end;gap:18px 28px}
+.cb-gift{display:flex;flex-wrap:wrap;align-items:flex-end;gap:14px}
+.cb-gift__lead{width:100%;font-family:var(--cb-ff-display);font-stretch:108%;text-transform:uppercase;letter-spacing:.1em;font-size:.8rem;color:var(--cb-teal-700)}
+.cb-field{display:flex;flex-direction:column;gap:.35rem;font-size:.72rem;letter-spacing:.12em;text-transform:uppercase;color:var(--cb-teal-700);font-family:var(--cb-ff-display)}
+.cb-select{font:inherit;font-size:.95rem;letter-spacing:normal;text-transform:none;padding:.65em 2.2em .65em .9em;border:1px solid var(--cb-line);background:var(--cb-paper);color:var(--cb-teal-900);cursor:pointer;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6'%3E%3Cpath d='M1 1l4 4 4-4' fill='none' stroke='%23cf5836' stroke-width='1.4'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right .8em center;-webkit-appearance:none;appearance:none}
+.cb-tarifs__note{flex:1;min-width:240px;color:var(--cb-teal-600);font-size:.82rem;letter-spacing:.03em}
+
 /* ── FAQ ──────────────────────────────────────────────────────────────────── */
 .cb-faq{max-width:880px;margin-inline:auto}
 .cb-faq h2{font-size:clamp(1.9rem,4.4vw,3.2rem);color:var(--cb-teal-900);text-align:center;margin-bottom:clamp(30px,4vw,52px)}
@@ -684,6 +701,61 @@ html,body{margin:0}
   </section>
 
   <!-- ══════════════════ 5 · POUR QUI / NIVEAUX ══════════════════ -->
+  <!-- ══ TARIFS (5e section) ══ -->
+  <section class="cb-section cb-paper" id="cb-tarifs" aria-labelledby="cb-tarifs-h">
+    <div class="cb-wrap">
+      <p class="cb-eyebrow">Tarifs</p>
+      <h2 id="cb-tarifs-h" class="cb-display cb-reveal" style="margin-top:.6rem;max-width:18ch">
+        <span class="cb-line"><span class="cb-line__in">Choisissez votre formule</span></span>
+      </h2>
+      <div class="cb-tarifs__grid">
+        <article class="cb-tarif cb-fade">
+          <h3 class="cb-tarif__name">Découverte</h3>
+          <p class="cb-tarif__price">150 €</p>
+          <p class="cb-tarif__desc">Une session d'initiation encadrée. Matériel et combinaison compris.</p>
+        </article>
+        <article class="cb-tarif cb-tarif--feature cb-fade">
+          <span class="cb-tarif__tag">Le plus choisi</span>
+          <h3 class="cb-tarif__name">Pack 3 sessions</h3>
+          <p class="cb-tarif__price">360 €</p>
+          <p class="cb-tarif__desc">Trois sessions pour progresser vraiment. Soit 120 € la session.</p>
+        </article>
+        <article class="cb-tarif cb-fade">
+          <h3 class="cb-tarif__name">Pack 5 sessions</h3>
+          <p class="cb-tarif__price">500 €</p>
+          <p class="cb-tarif__desc">Cinq sessions, le meilleur tarif. Soit 100 € la session.</p>
+        </article>
+        <article class="cb-tarif cb-fade">
+          <h3 class="cb-tarif__name">Session -16 ans</h3>
+          <p class="cb-tarif__price">120 €</p>
+          <p class="cb-tarif__desc">Session encadrée pour les moins de 16 ans, sous conditions.</p>
+        </article>
+      </div>
+
+      <div class="cb-tarifs__foot">
+        <form class="cb-gift" action="reservation-beauvallon.html" method="get">
+          <p class="cb-gift__lead">Offrir une session</p>
+          <label class="cb-field"><span>Spot</span>
+            <select name="spot" class="cb-select">
+              <option value="beauvallon">Beauvallon</option>
+              <option value="croix-valmer">La Croix-Valmer</option>
+            </select>
+          </label>
+          <label class="cb-field"><span>Créneau</span>
+            <select name="creneau" class="cb-select">
+              <option value="15h">15 h</option>
+              <option value="16h30">16 h 30</option>
+              <option value="18h">18 h</option>
+            </select>
+          </label>
+          <button type="submit" class="cb-btn cb-magnetic"><span>Offrir une session</span></button>
+        </form>
+        <p class="cb-tarifs__note">Spots : Beauvallon &amp; La Croix-Valmer · Créneaux : 15 h · 16 h 30 · 18 h · sur réservation.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════ 6 · POUR QUI / NIVEAUX ══════════════════ -->
   <section class="cb-section cb-who cb-paper" aria-labelledby="cb-who-h">
     <div class="cb-wrap">
       <p class="cb-eyebrow">Pour qui</p>
@@ -846,7 +918,7 @@ html,body{margin:0}
           <p class="cb-book__sub cb-fade">Choisissez votre créneau. On s'occupe du reste : matériel, encadrement, et le golfe pour vous seul, le temps d'une session.</p>
           <ul class="cb-book__facts cb-fade">
             <li>Durée <b>1 h – 1 h 30</b></li>
-            <li>Dès <b>{{PRIX}}</b></li>
+            <li>Dès <b>150 €</b></li>
             <li>Tous niveaux</li>
           </ul>
         </div>
@@ -869,7 +941,7 @@ html,body{margin:0}
       <h2 id="cb-faq-h" class="cb-display">Questions fréquentes</h2>
       <details>
         <summary>Combien coûte une session ?</summary>
-        <div class="cb-faq__a">Une session débute à {{PRIX}}, matériel et encadrement compris. Le tarif varie selon la durée et la formule (initiation encadrée ou session libre). Le détail s'affiche au moment de la réservation.</div>
+        <div class="cb-faq__a">Une session débute à 150 €, matériel et encadrement compris. Le tarif varie selon la durée et la formule (initiation encadrée ou session libre). Le détail s'affiche au moment de la réservation.</div>
       </details>
       <details>
         <summary>Combien de temps dure une session ?</summary>
@@ -910,7 +982,7 @@ html,body{margin:0}
             <dt>Adresse</dt>
             <dd>Base eFoil — au départ du ponton de Beauvallon<br>Boulevard des Collines, 83310 Grimaud <!-- n° de voie : à confirmer --></dd>
             <dt>Téléphone</dt>
-            <dd><a class="cb-link cb-ul" href="tel:{{TÉLÉPHONE_E164}}">{{TÉLÉPHONE}}</a></dd>
+            <dd><a class="cb-link cb-ul" href="tel:+33749197038">+33 7 49 19 70 38</a></dd>
             <dt>Accès &amp; carte</dt>
             <dd>Golfe de Saint-Tropez · 8 min de Saint-Tropez par la mer — <a class="cb-link cb-ul" href="{{LIEN_MAPS}}">voir sur la carte</a></dd>
           </dl>
@@ -936,7 +1008,7 @@ html,body{margin:0}
             <li>Boulevard des Collines</li>
             <li>83310 Grimaud</li>
             <li>Golfe de Saint-Tropez</li>
-            <li><a class="cb-ul" href="tel:{{TÉLÉPHONE_E164}}">{{TÉLÉPHONE}}</a></li>
+            <li><a class="cb-ul" href="tel:+33749197038">+33 7 49 19 70 38</a></li>
             <li><a class="cb-ul" href="mailto:{{EMAIL}}">{{EMAIL}}</a></li>
           </ul>
         </div>
@@ -944,7 +1016,7 @@ html,body{margin:0}
           <h4>Horaires &amp; liens</h4>
           <ul>
             <li>Sur réservation · 7j/7</li>
-            <li>Saison : {{HORAIRES}}</li>
+            <li>Créneaux : 15 h · 16 h 30 · 18 h</li>
             <li><a class="cb-ul" href="{{LIEN_INSTAGRAM}}">Instagram</a></li>
             <li><a class="cb-ul" href="{{LIEN_FICHE_GOOGLE}}">Fiche Google</a></li>
             <li><a class="cb-ul" href="{{LIEN_MENTIONS}}">Mentions légales</a></li>
@@ -975,7 +1047,7 @@ html,body{margin:0}
       "description":"Sessions d'eFoil encadrées au départ du ponton de Beauvallon, golfe de Saint-Tropez.",
       "url":"https://www.efoilcotedazur.fr/beauvallon/",
       "image":"https://www.efoilcotedazur.fr/assets/img/og-beauvallon.jpg",
-      "telephone":"{{TÉLÉPHONE}}",
+      "telephone":"+33 7 49 19 70 38",
       "priceRange":"€€€",
       "address":{
         "@type":"PostalAddress",
@@ -998,7 +1070,7 @@ html,body{margin:0}
       "@type":"FAQPage",
       "@id":"https://www.efoilcotedazur.fr/beauvallon/#faq",
       "mainEntity":[
-        {"@type":"Question","name":"Combien coûte une session ?","acceptedAnswer":{"@type":"Answer","text":"Une session débute à {{PRIX}}, matériel et encadrement compris. Le tarif varie selon la durée et la formule (initiation encadrée ou session libre). Le détail s'affiche au moment de la réservation."}},
+        {"@type":"Question","name":"Combien coûte une session ?","acceptedAnswer":{"@type":"Answer","text":"Une session débute à 150 €, matériel et encadrement compris. Le tarif varie selon la durée et la formule (initiation encadrée ou session libre). Le détail s'affiche au moment de la réservation."}},
         {"@type":"Question","name":"Combien de temps dure une session ?","acceptedAnswer":{"@type":"Answer","text":"Comptez 1 h à 1 h 30 sur place, briefing compris. Le temps de vol effectif dépend du niveau et de l'autonomie de la batterie — généralement amplement suffisant pour une première belle expérience."}},
         {"@type":"Question","name":"Faut-il déjà savoir foiler ?","acceptedAnswer":{"@type":"Answer","text":"Non. La session est accessible aux débutants, accompagnés par un moniteur. La puissance se règle à la télécommande, à votre rythme. La plupart des riders volent leurs premiers mètres dès la première séance."}},
         {"@type":"Question","name":"Que se passe-t-il en cas de mauvais temps ?","acceptedAnswer":{"@type":"Answer","text":"Le foil se pratique en eaux abritées, mais la sécurité prime. En cas de conditions défavorables, la session est reportée ou remboursée. Nous vous tenons informé la veille si besoin."}},
@@ -1010,7 +1082,7 @@ html,body{margin:0}
 }
 </script>
 
-<script>window.CB_POOL=["medias/web/pool/medias_cannes_cannes_cote_109_jpg.webp", "medias/web/pool/medias_cannes_cannes_cote_118_jpg.webp", "medias/web/pool/medias_cannes_cannes_cote_120_jpg.webp", "medias/web/pool/medias_cannes_cannes_cote_125_jpg.webp", "medias/web/pool/medias_cannes_cannes_cote_126_jpg.webp", "medias/web/pool/medias_cannes_cannes_cote_129_jpg.webp", "medias/web/pool/medias_cannes_cannes_cote_131_jpg.webp", "medias/web/pool/medias_cannes_cannes_cote_134_jpg.webp", "medias/web/pool/medias_cannes_cannes_cote_135_jpg.webp", "medias/web/pool/medias_cannes_cannes_cote_146_jpg.webp", "medias/web/pool/medias_cannes_cannes_cote_153_jpg.webp", "medias/web/pool/medias_cannes_cannes_cote_155_jpg.webp", "medias/web/pool/medias_cannes_cannes_cote_161_jpg.webp", "medias/web/pool/medias_cannes_cannes_cote_167_jpg.webp", "medias/web/pool/medias_cannes_cannes_cote_177_jpg.webp", "medias/web/pool/medias_cannes_cannes_cote_180_jpg.webp", "medias/web/pool/medias_cannes_cannes_cote_182_jpg.webp", "medias/web/pool/medias_cannes_cannes_cote_189_jpg.webp", "medias/web/pool/medias_cannes_cannes_cote_190_jpg.webp", "medias/web/pool/medias_cannes_cannes_cote_194_jpg.webp", "medias/web/pool/medias_cannes_cannes_cote_2_jpg.webp", "medias/web/pool/medias_cannes_cannes_cote_30_jpg.webp", "medias/web/pool/medias_cannes_cannes_cote_36_jpg.webp", "medias/web/pool/medias_cannes_cannes_cote_3_jpg.webp", "medias/web/pool/medias_cannes_cannes_cote_45_jpg.webp", "medias/web/pool/medias_cannes_cannes_cote_4_jpg.webp", "medias/web/pool/medias_cannes_cannes_cote_50_jpg.webp", "medias/web/pool/medias_cannes_cannes_cote_53_jpg.webp", "medias/web/pool/medias_cannes_cannes_cote_56_jpg.webp", "medias/web/pool/medias_cannes_cannes_cote_57_jpg.webp", "medias/web/pool/medias_cannes_cannes_cote_58_jpg.webp", "medias/web/pool/medias_cannes_cannes_cote_61_jpg.webp", "medias/web/pool/medias_cannes_cannes_cote_64_jpg.webp", "medias/web/pool/medias_cannes_cannes_cote_73_jpg.webp", "medias/web/pool/medias_cannes_cannes_cote_83_jpg.webp", "medias/web/pool/medias_cannes_cannes_cote_85_jpg.webp", "medias/web/pool/medias_cannes_cannes_cote_86_jpg.webp", "medias/web/pool/medias_cannes_cannes_cote_90_jpg.webp", "medias/web/pool/medias_cannes_cannes_cote_94_jpg.webp", "medias/web/pool/medias_cannes_cannes_cote_96_jpg.webp", "medias/web/pool/medias_cannes_cannes_cote_99_jpg.webp", "medias/web/pool/medias_cannes_cannes_day1_2_jpg.webp", "medias/web/pool/medias_cannes_cannes_day1_4_jpg.webp", "medias/web/pool/medias_esterel_post_4x5_5_jpg.webp", "medias/web/pool/medias_iles_lerins_post_4x5_24_three_jpg.webp", "medias/web/pool/medias_iles_lerins_post_4x5_25_secondd_jpg.webp", "medias/web/pool/medias_iles_lerins_post_4x5_26_first_jpg.webp", "medias/web/pool/medias_saint_tropez_stropez_day2_11_jpg.webp", "medias/web/pool/medias_saint_tropez_stropez_day2_7_jpg.webp", "medias/web/pool/medias_video_frames_auto_aw_02_jpg.webp", "medias/web/pool/medias_video_frames_auto_aw_06_jpg.webp", "medias/web/pool/medias_video_frames_auto_aw_10_jpg.webp", "medias/web/pool/medias_video_frames_auto_aw_14_jpg.webp", "medias/web/pool/medias_video_frames_auto_aw_18_jpg.webp", "medias/web/pool/medias_video_frames_auto_aw_22_jpg.webp", "medias/web/pool/medias_video_frames_auto_aw_30_jpg.webp", "medias/web/pool/medias_video_frames_auto_aw_34_jpg.webp", "medias/web/pool/medias_video_frames_auto_aw_38_jpg.webp", "medias/web/pool/medias_video_frames_auto_aw_42_jpg.webp", "medias/web/pool/medias_video_frames_auto_aw_46_jpg.webp", "medias/web/pool/medias_video_frames_auto_aw_58_jpg.webp", "medias/web/pool/medias_video_frames_auto_fo_05_jpg.webp", "medias/web/pool/medias_video_frames_auto_pu_14_jpg.webp", "medias/web/pool/medias_video_frames_auto_res_09_jpg.webp", "medias/web/pool/medias_video_frames_auto_res_15_jpg.webp", "medias/web/pool/medias_video_frames_auto_res_33_jpg.webp", "medias/web/pool/medias_video_frames_auto_res_39_jpg.webp", "medias/web/pool/medias_video_frames_auto_res_57_jpg.webp", "medias/web/pool/medias_video_frames_auto_res_63_jpg.webp", "medias/web/pool/medias_video_frames_auto_to_02_jpg.webp", "medias/web/pool/medias_video_frames_auto_to_08_jpg.webp", "medias/web/pool/medias_video_frames_auto_ve_03_jpg.webp", "medias/web/pool/medias_video_frames_auto_ve_39_jpg.webp", "medias/web/pool/medias_video_frames_awaking_65_jpg.webp", "medias/web/pool/medias_video_frames_drone_aw_005_0_jpg.webp", "medias/web/pool/medias_video_frames_drone_aw_006_6_jpg.webp", "medias/web/pool/medias_video_frames_drone_aw_017_0_jpg.webp", "medias/web/pool/medias_video_frames_drone_aw_018_6_jpg.webp", "medias/web/pool/medias_video_frames_drone_aw_023_4_jpg.webp", "medias/web/pool/medias_video_frames_drone_aw_034_6_jpg.webp", "medias/web/pool/medias_video_frames_drone_aw_035_4_jpg.webp", "medias/web/pool/medias_video_frames_drone_aw_040_2_jpg.webp", "medias/web/pool/medias_video_frames_drone_aw_042_6_jpg.webp", "medias/web/pool/medias_video_frames_drone_aw_043_4_jpg.webp", "medias/web/pool/medias_video_frames_drone_aw_044_2_jpg.webp", "medias/web/pool/medias_video_frames_esp_torre_65_jpg.webp", "medias/web/pool/medias_video_frames_resume_65_jpg.webp"];</script>
+<script>window.CB_POOL=["medias/web/pool/medias_cannes_cannes_cote_109_jpg.webp", "medias/web/pool/medias_cannes_cannes_cote_118_jpg.webp", "medias/web/pool/medias_cannes_cannes_cote_120_jpg.webp", "medias/web/pool/medias_cannes_cannes_cote_125_jpg.webp", "medias/web/pool/medias_cannes_cannes_cote_126_jpg.webp", "medias/web/pool/medias_cannes_cannes_cote_129_jpg.webp", "medias/web/pool/medias_cannes_cannes_cote_131_jpg.webp", "medias/web/pool/medias_cannes_cannes_cote_134_jpg.webp", "medias/web/pool/medias_cannes_cannes_cote_135_jpg.webp", "medias/web/pool/medias_cannes_cannes_cote_146_jpg.webp", "medias/web/pool/medias_cannes_cannes_cote_153_jpg.webp", "medias/web/pool/medias_cannes_cannes_cote_155_jpg.webp", "medias/web/pool/medias_cannes_cannes_cote_161_jpg.webp", "medias/web/pool/medias_cannes_cannes_cote_167_jpg.webp", "medias/web/pool/medias_cannes_cannes_cote_177_jpg.webp", "medias/web/pool/medias_cannes_cannes_cote_180_jpg.webp", "medias/web/pool/medias_cannes_cannes_cote_182_jpg.webp", "medias/web/pool/medias_cannes_cannes_cote_189_jpg.webp", "medias/web/pool/medias_cannes_cannes_cote_190_jpg.webp", "medias/web/pool/medias_cannes_cannes_cote_194_jpg.webp", "medias/web/pool/medias_cannes_cannes_cote_2_jpg.webp", "medias/web/pool/medias_cannes_cannes_cote_30_jpg.webp", "medias/web/pool/medias_cannes_cannes_cote_36_jpg.webp", "medias/web/pool/medias_cannes_cannes_cote_3_jpg.webp", "medias/web/pool/medias_cannes_cannes_cote_45_jpg.webp", "medias/web/pool/medias_cannes_cannes_cote_4_jpg.webp", "medias/web/pool/medias_cannes_cannes_cote_50_jpg.webp", "medias/web/pool/medias_cannes_cannes_cote_53_jpg.webp", "medias/web/pool/medias_cannes_cannes_cote_56_jpg.webp", "medias/web/pool/medias_cannes_cannes_cote_57_jpg.webp", "medias/web/pool/medias_cannes_cannes_cote_58_jpg.webp", "medias/web/pool/medias_cannes_cannes_cote_61_jpg.webp", "medias/web/pool/medias_cannes_cannes_cote_64_jpg.webp", "medias/web/pool/medias_cannes_cannes_cote_73_jpg.webp", "medias/web/pool/medias_cannes_cannes_cote_83_jpg.webp", "medias/web/pool/medias_cannes_cannes_cote_85_jpg.webp", "medias/web/pool/medias_cannes_cannes_cote_86_jpg.webp", "medias/web/pool/medias_cannes_cannes_cote_90_jpg.webp", "medias/web/pool/medias_cannes_cannes_cote_94_jpg.webp", "medias/web/pool/medias_cannes_cannes_cote_96_jpg.webp", "medias/web/pool/medias_cannes_cannes_cote_99_jpg.webp", "medias/web/pool/medias_cannes_cannes_day1_2_jpg.webp", "medias/web/pool/medias_cannes_cannes_day1_4_jpg.webp", "medias/web/pool/medias_como_beauvallon_19a1d93b_24c7_4ce7_8e34_fc634e6ce764_jpg.webp", "medias/web/pool/medias_como_beauvallon_6f9dea10_981b_4b23_8fde_4a21f87acd52_jpg.webp", "medias/web/pool/medias_como_beauvallon_a715426f_04a3_4407_abce_65a7dffb1f08_jpg.webp", "medias/web/pool/medias_esterel_post_4x5_5_jpg.webp", "medias/web/pool/medias_iles_lerins_post_4x5_24_three_jpg.webp", "medias/web/pool/medias_iles_lerins_post_4x5_25_secondd_jpg.webp", "medias/web/pool/medias_iles_lerins_post_4x5_26_first_jpg.webp", "medias/web/pool/medias_saint_tropez_stropez_day2_11_jpg.webp", "medias/web/pool/medias_saint_tropez_stropez_day2_7_jpg.webp", "medias/web/pool/medias_video_frames_auto_aw_02_jpg.webp", "medias/web/pool/medias_video_frames_auto_aw_06_jpg.webp", "medias/web/pool/medias_video_frames_auto_aw_10_jpg.webp", "medias/web/pool/medias_video_frames_auto_aw_14_jpg.webp", "medias/web/pool/medias_video_frames_auto_aw_18_jpg.webp", "medias/web/pool/medias_video_frames_auto_aw_22_jpg.webp", "medias/web/pool/medias_video_frames_auto_aw_30_jpg.webp", "medias/web/pool/medias_video_frames_auto_aw_34_jpg.webp", "medias/web/pool/medias_video_frames_auto_aw_38_jpg.webp", "medias/web/pool/medias_video_frames_auto_aw_42_jpg.webp", "medias/web/pool/medias_video_frames_auto_aw_46_jpg.webp", "medias/web/pool/medias_video_frames_auto_aw_58_jpg.webp", "medias/web/pool/medias_video_frames_auto_fo_05_jpg.webp", "medias/web/pool/medias_video_frames_auto_pu_14_jpg.webp", "medias/web/pool/medias_video_frames_auto_res_09_jpg.webp", "medias/web/pool/medias_video_frames_auto_res_15_jpg.webp", "medias/web/pool/medias_video_frames_auto_res_33_jpg.webp", "medias/web/pool/medias_video_frames_auto_res_39_jpg.webp", "medias/web/pool/medias_video_frames_auto_res_57_jpg.webp", "medias/web/pool/medias_video_frames_auto_res_63_jpg.webp", "medias/web/pool/medias_video_frames_auto_to_02_jpg.webp", "medias/web/pool/medias_video_frames_auto_to_08_jpg.webp", "medias/web/pool/medias_video_frames_auto_ve_03_jpg.webp", "medias/web/pool/medias_video_frames_auto_ve_39_jpg.webp", "medias/web/pool/medias_video_frames_awaking_65_jpg.webp", "medias/web/pool/medias_video_frames_drone_aw_005_0_jpg.webp", "medias/web/pool/medias_video_frames_drone_aw_006_6_jpg.webp", "medias/web/pool/medias_video_frames_drone_aw_017_0_jpg.webp", "medias/web/pool/medias_video_frames_drone_aw_018_6_jpg.webp", "medias/web/pool/medias_video_frames_drone_aw_023_4_jpg.webp", "medias/web/pool/medias_video_frames_drone_aw_034_6_jpg.webp", "medias/web/pool/medias_video_frames_drone_aw_035_4_jpg.webp", "medias/web/pool/medias_video_frames_drone_aw_040_2_jpg.webp", "medias/web/pool/medias_video_frames_drone_aw_042_6_jpg.webp", "medias/web/pool/medias_video_frames_drone_aw_043_4_jpg.webp", "medias/web/pool/medias_video_frames_drone_aw_044_2_jpg.webp", "medias/web/pool/medias_video_frames_esp_torre_65_jpg.webp", "medias/web/pool/medias_video_frames_resume_65_jpg.webp"];</script>
 <!-- ══ GSAP + ScrollTrigger (lib d'animation, defer). Fallback : si le CDN est bloqué,
         l'init révèle tout le contenu. Pour 100% self-host : télécharger en /vendor/. ══ -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.13.0/gsap.min.js" defer></script>
