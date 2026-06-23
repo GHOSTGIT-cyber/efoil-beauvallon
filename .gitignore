@@ -1,8 +1,27 @@
-# === Medias : versionnes (incl. medias/web/ + reels compresses) ===
-# Les versions web optimisees (WebP + mp4) sont suivies par git.
-# Seuls les originaux video lourds restent hors git (voir assets/video/ plus bas).
+# ════════════════════════════════════════════════════════════════
+#  Depot site Beauvallon : on ne versionne QUE
+#    - index.html (la page du site)
+#    - assets/  et  medias/
+#  Tout le reste (autres pages, outils, docs) reste en LOCAL, hors git.
+# ════════════════════════════════════════════════════════════════
 
-# === OS / IDE ===
+# 1) tout ignorer a la racine
+/*
+
+# 2) sauf ce qu'on garde
+!/.gitignore
+!/index.html
+!/reservation-beauvallon.html
+!/dashboard.html
+!/assets/
+!/medias/
+!/api/
+
+# 3) mais re-ignorer les originaux video lourds dans assets/
+#    (hero + reels bruts ; les versions web sont dans medias/web/)
+assets/video/
+
+# === OS / IDE (a tous les niveaux) ===
 .DS_Store
 Thumbs.db
 desktop.ini
@@ -11,16 +30,7 @@ desktop.ini
 *.swp
 *.swo
 
-# === Node (si on ajoute un build tool plus tard) ===
+# === Node (si build tool plus tard) ===
 node_modules/
 .env
 .env.local
-
-# === WordPress local ===
-wordpress/*.log
-
-# === Videos lourdes : hors git (hebergement externe / Git LFS au deploiement) ===
-assets/video/
-
-# === Squad d'agents SEO/GEO (copie locale, hors git) ===
-11+Agents+SEO+_+GEO+-+RosoAI/
