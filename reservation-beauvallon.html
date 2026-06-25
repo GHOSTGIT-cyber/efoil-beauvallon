@@ -56,7 +56,6 @@ textarea{min-height:90px;resize:vertical}
   background:var(--terra-deep);color:var(--white);border:0;border-radius:2px;padding:1.05em 2.1em;cursor:pointer;transition:background .2s}
 .btn:hover{background:#c8502b}
 .note{font-size:.8rem;color:var(--taupe)}
-.hp-field{position:absolute!important;left:-9999px;top:auto;width:1px;height:1px;overflow:hidden}
 .req::after{content:" *";color:var(--terra)}
 .ok{display:none}
 .ok.show{display:block;text-align:center;padding:clamp(30px,6vw,60px) 0}
@@ -119,8 +118,10 @@ textarea{min-height:90px;resize:vertical}
 
       <div><label class="fld req" for="email">Email</label><input type="email" id="email" name="email" autocomplete="email" required></div>
       <div><label class="fld" for="msg">Message (optionnel)</label><textarea id="msg" name="msg" placeholder="Une précision, une occasion particulière…"></textarea></div>
-      <!-- honeypot anti-bot : doit rester vide (rempli = bot -> l'API renvoie 200 sans enregistrer) -->
-      <div class="hp-field" aria-hidden="true"><label>Ne pas remplir<input type="text" name="hp" id="hp" tabindex="-1" autocomplete="off"></label></div>
+      <!-- honeypot anti-bot : doit rester vide. name=hp_token (non reconnu par l'autofill navigateur) + display:none -->
+      <div style="display:none" aria-hidden="true">
+        <input type="text" name="hp_token" tabindex="-1" autocomplete="off" value="">
+      </div>
 
       <div style="display:flex;flex-wrap:wrap;gap:1rem;align-items:center">
         <button type="submit" class="btn">Envoyer ma demande</button>
@@ -194,7 +195,7 @@ textarea{min-height:90px;resize:vertical}
       participants: participants,           /* entier */
       level:        val('niveau'),
       message:      val('msg'),
-      hp:           val('hp'),              /* honeypot : doit rester vide */
+      hp:           val('hp_token'),        /* honeypot (hp_token, anti-autofill) : doit rester vide */
       createdAt:    new Date().toISOString()
     };
 
