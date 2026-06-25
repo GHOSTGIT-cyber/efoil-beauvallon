@@ -3,6 +3,10 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="icon" type="image/png" sizes="32x32" href="assets/img/favicon-32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="assets/img/favicon-16.png">
+<link rel="icon" href="assets/img/favicon.ico" sizes="any">
+<link rel="apple-touch-icon" href="assets/img/apple-touch-icon.png">
 <title>Réserver une session eFoil — Beauvallon, golfe de Saint-Tropez</title>
 <meta name="description" content="Réservez votre session d'eFoil au départ du ponton de Beauvallon. Demande sans paiement — on vous recontacte pour confirmer le créneau.">
 <meta name="robots" content="noindex,follow">
@@ -51,6 +55,7 @@ textarea{min-height:90px;resize:vertical}
   background:var(--terra-deep);color:var(--white);border:0;border-radius:2px;padding:1.05em 2.1em;cursor:pointer;transition:background .2s}
 .btn:hover{background:#c8502b}
 .note{font-size:.8rem;color:var(--taupe)}
+.hp-field{position:absolute!important;left:-9999px;top:auto;width:1px;height:1px;overflow:hidden}
 .req::after{content:" *";color:var(--terra)}
 .ok{display:none}
 .ok.show{display:block;text-align:center;padding:clamp(30px,6vw,60px) 0}
@@ -89,9 +94,11 @@ textarea{min-height:90px;resize:vertical}
 
       <div class="grid2">
         <div><label class="fld req" for="date">Date souhaitée</label><input type="date" id="date" name="date" required></div>
-        <div><label class="fld" for="creneau">Créneau</label>
-          <select id="creneau" name="creneau">
-            <option>Matin (eaux calmes)</option><option>Midi</option><option>Fin de journée (golden hour)</option><option>Flexible</option>
+        <div><label class="fld req" for="creneau">Créneau</label>
+          <select id="creneau" name="creneau" required>
+            <option value="15:00">15 h</option>
+            <option value="16:30">16 h 30</option>
+            <option value="18:00">18 h</option>
           </select></div>
       </div>
 
@@ -109,6 +116,8 @@ textarea{min-height:90px;resize:vertical}
 
       <div><label class="fld req" for="email">Email</label><input type="email" id="email" name="email" autocomplete="email" required></div>
       <div><label class="fld" for="msg">Message (optionnel)</label><textarea id="msg" name="msg" placeholder="Une précision, une occasion particulière…"></textarea></div>
+      <!-- honeypot anti-bot : doit rester vide (rempli = bot -> l'API renvoie 200 sans enregistrer) -->
+      <div class="hp-field" aria-hidden="true"><label>Ne pas remplir<input type="text" name="hp" id="hp" tabindex="-1" autocomplete="off"></label></div>
 
       <div style="display:flex;flex-wrap:wrap;gap:1rem;align-items:center">
         <button type="submit" class="btn">Envoyer ma demande</button>
@@ -127,43 +136,82 @@ textarea{min-height:90px;resize:vertical}
   </section>
 
   <p class="foot">
-    Une question ? Appelez le <a href="tel:{{TÉLÉPHONE_E164}}">{{TÉLÉPHONE}}</a>.<br>
-    <!-- BACKEND : ce formulaire est front-only (aucun paiement). À brancher sur un endpoint
-         (REST WordPress / CPT « reservation » / Odoo, ou un simple envoi email/mailto)
-         là où c'est indiqué dans le script ci-dessous. -->
+    Une question ? Appelez le <a href="tel:+33749197038">+33 7 49 19 70 38</a>.<br>
+    <!-- BACKEND : chaque réservation est postée au dashboard de la marque
+         (voir storeEndpoint en haut du script). Envoi no-cors, sans paiement. -->
   </p>
 </div>
 
 <script>
 (function(){
+  /* ⚙️ CONFIG MARQUE — pour brancher une autre marque, ne changez QUE cette ligne : */
+  var storeEndpoint = 'https://resa.efoil-beauvallon.fr/api/reservations?site=beauvallon';
+  var refPrefix     = 'EFB'; /* prefixe de reference, ex. EFB-260628-AB12 */
+
   var form=document.getElementById('form'), ok=document.getElementById('ok'), resa=document.getElementById('resa');
   if(!form) return;
+
+  /* date mini = aujourd'hui */
+  var dt=document.getElementById('date'); if(dt){var t=new Date();if(!isNaN(t)){dt.min=t.toISOString().slice(0,10);}}
+
+  function pad(n){return (n<10?'0':'')+n;}
+  function genRef(){
+    var d=new Date();
+    var ymd=String(d.getFullYear()).slice(2)+pad(d.getMonth()+1)+pad(d.getDate());
+    var chars='ABCDEFGHJKLMNPQRSTUVWXYZ23456789', s='';
+    for(var i=0;i<4;i++){ s+=chars.charAt(Math.floor(Math.random()*chars.length)); }
+    return refPrefix+'-'+ymd+'-'+s;
+  }
+  function val(name){ var el=form.elements[name]; return el?(''+el.value).trim():''; }
+
   form.addEventListener('submit',function(e){
     e.preventDefault();
-    // validation minimale
-    var required=form.querySelectorAll('[required]'); var bad=null;
-    required.forEach(function(el){ if(!el.value.trim()){ el.style.borderColor='#cf5836'; if(!bad) bad=el; } });
-    if(bad){ bad.focus(); return; }
-    var d=new FormData(form), data={};
-    d.forEach(function(v,k){ data[k]=v; });
 
-    /* ===== À BRANCHER : envoi réel (sans paiement) =====
-       Exemple : fetch('/wp-json/efca/v1/reservation',{method:'POST',
-         headers:{'Content-Type':'application/json'}, body:JSON.stringify(data)});
-       ou un mailto de secours :
-       location.href='mailto:contact@efoilcotedazur.fr?subject=Réservation%20Beauvallon&body='+encodeURIComponent(JSON.stringify(data,null,2));
-       Ici on continue simplement vers la confirmation. */
+    /* Obligatoires cote dashboard : name, date, slot (sinon 422). + email/tel cote front. */
+    var f={ nom:val('nom'), date:val('date'), creneau:val('creneau'), email:val('email'), tel:val('tel') };
+    var firstBad=null;
+    ['nom','date','creneau','email','tel'].forEach(function(n){
+      var el=form.elements[n]; if(!el) return;
+      var good=!!f[n]; el.style.borderColor = good ? '' : 'var(--terra)';
+      if(!good && !firstBad) firstBad=el;
+    });
+    if(firstBad){ firstBad.focus(); return; }
 
-    document.getElementById('ok-nom').textContent = data.nom || 'à vous';
+    var participants=parseInt(val('pers'),10); if(isNaN(participants)) participants=1;
+    var ref=genRef();
+
+    var payload={
+      ref:          ref,
+      name:         f.nom,
+      email:        f.email,
+      phone:        f.tel,
+      formule:      val('formule'),
+      date:         f.date,                 /* AAAA-MM-JJ */
+      slot:         f.creneau,              /* ex. 15:00 */
+      participants: participants,           /* entier */
+      level:        val('niveau'),
+      message:      val('msg'),
+      hp:           val('hp'),              /* honeypot : doit rester vide */
+      createdAt:    new Date().toISOString()
+    };
+
+    /* Envoi "simple" volontaire : pas de preflight CORS, reponse non lue (no-cors). */
+    fetch(storeEndpoint, {
+      method: 'POST',
+      mode: 'no-cors',
+      headers: { 'Content-Type': 'text/plain;charset=utf-8' },
+      body: JSON.stringify(payload)
+    }).catch(function(){ /* reponse opaque / hors-ligne : le dashboard reste la source de verite */ });
+
+    /* Confirmation cote client (la reponse no-cors n'est pas lisible) */
+    document.getElementById('ok-nom').textContent = payload.name || 'à vous';
     var recap=document.getElementById('recap');
-    var rows=[['Formule',data.formule],['Date',data.date||'à définir'],['Créneau',data.creneau],
-              ['Personnes',data.pers],['Niveau',data.niveau],['Contact',(data.tel||'')+' · '+(data.email||'')]];
+    var rows=[['Référence',ref],['Formule',payload.formule],['Date',payload.date||'à définir'],['Créneau',payload.slot],
+              ['Personnes',participants],['Niveau',payload.level],['Contact',(payload.phone||'')+' · '+(payload.email||'')]];
     recap.innerHTML=rows.map(function(r){return '<dt>'+r[0]+'</dt><dd>'+(r[1]||'—')+'</dd>';}).join('');
     resa.style.display='none'; ok.classList.add('show');
     window.scrollTo({top:0,behavior:'smooth'});
   });
-  // date mini = aujourd'hui
-  var dt=document.getElementById('date'); if(dt){var t=new Date();if(!isNaN(t)){dt.min=t.toISOString().slice(0,10);}}
 })();
 </script>
 </body>
