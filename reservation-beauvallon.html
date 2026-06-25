@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="icon" type="image/png" sizes="32x32" href="assets/img/favicon-32.png">
 <link rel="icon" type="image/png" sizes="16x16" href="assets/img/favicon-16.png">
-<link rel="icon" href="assets/img/favicon.ico" sizes="any">
+<link rel="icon" href="favicon.ico" sizes="any">
 <link rel="apple-touch-icon" href="assets/img/apple-touch-icon.png">
 <title>Réserver une session eFoil — Beauvallon, golfe de Saint-Tropez</title>
 <meta name="description" content="Réservez votre session d'eFoil au départ du ponton de Beauvallon. Demande sans paiement — on vous recontacte pour confirmer le créneau.">
@@ -36,7 +36,8 @@ form{margin-top:clamp(28px,5vw,44px);display:grid;gap:1.4rem}
 fieldset{border:0;margin:0;padding:0}
 legend{font-family:var(--ff-d);font-stretch:106%;text-transform:uppercase;letter-spacing:.16em;font-size:.74rem;color:var(--terra-deep);margin-bottom:.7rem}
 .formules{display:grid;grid-template-columns:1fr;gap:.7rem}
-@media(min-width:620px){.formules{grid-template-columns:repeat(3,1fr)}}
+@media(min-width:560px){.formules{grid-template-columns:repeat(2,1fr)}}
+@media(min-width:980px){.formules{grid-template-columns:repeat(4,1fr)}}
 .formule{position:relative;border:1px solid var(--line);border-radius:2px;padding:1rem;cursor:pointer;background:var(--white);transition:border-color .2s,box-shadow .2s}
 .formule:hover{border-color:var(--taupe)}
 .formule input{position:absolute;opacity:0}
@@ -83,12 +84,14 @@ textarea{min-height:90px;resize:vertical}
       <fieldset>
         <legend>Votre formule</legend>
         <div class="formules">
-          <label class="formule"><input type="radio" name="formule" value="Découverte (1 h)" checked>
-            <span class="fbox"><b>Découverte</b><span>1 h · initiation encadrée</span><em>dès 150 €</em></span></label>
-          <label class="formule"><input type="radio" name="formule" value="Progression (pack 3 sessions)">
-            <span class="fbox"><b>Progression</b><span>pack 3 sessions</span><em>sur devis</em></span></label>
-          <label class="formule"><input type="radio" name="formule" value="Bon cadeau">
-            <span class="fbox"><b>Bon cadeau</b><span>montant libre</span><em>à offrir</em></span></label>
+          <label class="formule"><input type="radio" name="formule" value="Découverte — 150 €" checked>
+            <span class="fbox"><b>Découverte</b><span>1 h · initiation encadrée</span><em>150 €</em></span></label>
+          <label class="formule"><input type="radio" name="formule" value="Pack 3 sessions — 360 €">
+            <span class="fbox"><b>Pack 3 sessions</b><span>pour progresser</span><em>360 €</em></span></label>
+          <label class="formule"><input type="radio" name="formule" value="Pack 5 sessions — 500 €">
+            <span class="fbox"><b>Pack 5 sessions</b><span>le meilleur tarif</span><em>500 €</em></span></label>
+          <label class="formule"><input type="radio" name="formule" value="Session -16 ans — 120 €">
+            <span class="fbox"><b>Session -16 ans</b><span>moins de 16 ans</span><em>120 €</em></span></label>
         </div>
       </fieldset>
 
@@ -96,9 +99,9 @@ textarea{min-height:90px;resize:vertical}
         <div><label class="fld req" for="date">Date souhaitée</label><input type="date" id="date" name="date" required></div>
         <div><label class="fld req" for="creneau">Créneau</label>
           <select id="creneau" name="creneau" required>
-            <option value="15:00">15 h</option>
-            <option value="16:30">16 h 30</option>
-            <option value="18:00">18 h</option>
+            <option value="15:30">15 h 30</option>
+            <option value="17:00">17 h</option>
+            <option value="18:30">18 h 30</option>
           </select></div>
       </div>
 
